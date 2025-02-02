@@ -1,0 +1,42 @@
+/* 1000px */
+@media (max-width: 1000px) {
+    .top-mini-header .content .logo-container{
+        display: block;
+    }
+    .top-mini-header .left-links a{
+      display: none;
+    }
+    .main-header .logo-container{
+        display: none;
+    }
+    .menu-toggle
+    {
+        display:block;
+    }
+    .sidebar {
+        display: none;
+    }
+  }
+  /* swiper  */
+@media (max-width: 768px) {
+    .swiper-container {
+        height: 300px; /* تقليل الارتفاع في الشاشات الصغيرة */
+    }
+
+    .card {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    .swiper-container {
+        height: 250px; 
+    }
+
+    .card {
+        max-width: 200px;
+    }
+    .top-mini-header {
+        padding: 0 10px;
+     }
+}

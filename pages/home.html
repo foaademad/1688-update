@@ -5,34 +5,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-commerce Store</title>
-    <!-- Add Gilroy Font -->
-    <link href="https://cdn.jsdelivr.net/npm/pt-sans@2.0.2/pt-sans.css" rel="stylesheet">
-   
+    <!-- font style  -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <!-- bootstrap style  -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.rtl.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <!-- swiper  -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- custom style  -->
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     
 </head>
-<body dir="rtl" >
+<body  >
     <div class="top-mini-header">
-        <div class="content">
+        <div class="content container">
+            <div class="logo-container">
+                <img src="../asset/logo.png" alt="Shop Logo" class="logo " >
+            </div>
             <div class="left-links">
                 <a href="#">Calculator</a>
                 <a href="#">FAQ</a>
             </div>
-            <div class="right-links">
-                <a href="#">Login</a>
-                <a href="#">Register</a>
+            <div class="right-links text-end p-3">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
             </div>
+        
+            <!-- Login Modal -->
+            <div class="modal fade custom-modal" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="loginForm">
+                                <div class="mb-3">
+                                    <label for="loginEmail" class="form-label">Email</label>
+                                    <input type="text" class="form-control" id="loginEmail">
+                                    <div class="error-message" id="errorLoginEmail">Invalid email format.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="loginPassword">
+                                    <div class="error-message" id="errorLoginPassword">Password is required.</div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <div class="action">
+
+                                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        
+            <!-- Registration Modal -->
+            <div class="modal fade custom-modal" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="registerForm">
+                                <div class="mb-3">
+                                    <label for="registerName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="registerName">
+                                    <div class="error-message" id="errorName">Name is required.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerEmail" class="form-label">Email</label>
+                                    <input type="text" class="form-control" id="registerEmail">
+                                    <div class="error-message" id="errorEmail">Invalid email format.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="registerPassword">
+                                    <div class="error-message" id="errorPassword">Password is required.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <span id="captchaText" class="border p-2 me-2"></span>
+                                        <button type="button" class="btn btn-outline-secondary" id="refreshCaptcha"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg></button>
+                                    </div>
+                                    <input type="text" class="form-control mt-2" id="registerCaptcha" placeholder="Enter captcha">
+                                    <div class="error-message" id="errorCaptcha">Captcha is incorrect.</div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <div class="action">
+
+                                        <input type="checkbox" class="form-check-input" id="agreeTerms">
+                                        <label class="form-check-label" for="agreeTerms">I agree with the Terms & Conditions</label>
+                                    </div>
+                                    <div class="error-message" id="errorTerms">You must agree to the terms.</div>
+                                </div>
+                                <button type="submit" class="btn reg-btn">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
         </div>
         
     </div>
 
     <header class="header">
-        <div class="main-header">
+        <div class="main-header container">
             <div class="logo-container">
-                <img src="https://open-demo.otcommerce.com/i/logo.png" alt="Shop Logo" class="logo">
-                <!-- <span class="store-name">StonyTrack</span> -->
+                <img src="../asset/logo.png" alt="Shop Logo" class="logo">
+            </div>
+            <div class="menu-toggle" data-bs-toggle="modal" data-bs-target="#menuModal">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18"/>
+                    <path d="M3 15h18"/>
+                    <path d="M3 24h18"/>
+                </svg>
+            </div>
+             <!-- model for nav bar -->
+             <div class="modal fade custom-modal" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <ul class="menu-list">
+                                <li><i class="fas fa-home"></i> <a href="#">Home</a></li>
+                                <li><i class="fas fa-list"></i> <a href="#">Catalog</a></li>
+                                <li><i class="fas fa-box"></i> <a href="#">My Orders</a></li>
+                                <li><i class="fas fa-shopping-cart"></i> <a href="#">Cart</a></li>
+                                <li><i class="fas fa-heart"></i> <a href="#">Favorites</a></li>
+                                <li><i class="fas fa-info-circle"></i> <a href="#">How to Order</a></li>
+                                <li><i class="fas fa-credit-card"></i> <a href="#">How to Pay</a></li>
+                                <li><i class="fas fa-truck"></i> <a href="#">Delivery of Goods</a></li>
+                                <li><i class="fas fa-globe"></i> <a href="#">Global Remittance</a></li>
+                                <li><i class="fas fa-calculator"></i> <a href="#">Calculator</a></li>
+                                <li><i class="fas fa-question-circle"></i> <a href="#">FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div class="search-container">
@@ -51,186 +176,1340 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
                      <span class="cart-count">0</span>
                 </div>
+                <div class="btn-group">
+                    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i id="lang-icon" class="fas fa-globe"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-lg-end">
+                      <li>
+                        <a class="dropdown-item" href="#" onclick="setLanguage('en')">En</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#" onclick="setLanguage('ar')">Ar</i></a>
+                      </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
 
-    <div class="main-container">
+    <div class="main-container container">
         <nav class="sidebar">
-            <div class="category-item">
-                <button class="category-button">
-                    Cosmetics and skin care
-                    <span class="arrow">›</span>
-                </button>
-                <div class="dropdown-content">
-                    <div class="dropdown-item">
-                        Facial Care
+            <h2>category</h2>
+            <div class="cagtogry-bar">
+
+                <div class="category-item">
+                    <button class="category-button">
+                        Cosmetics and skin care
                         <span class="arrow">›</span>
-                        <div class="sub-dropdown">
-                            <div class="sub-item">Cleansers</div>
-                            <div class="sub-item">Moisturizers</div>
-                            <div class="sub-item">Serums</div>
-                            <div class="sub-item">Face Masks</div>
-                            <div class="sub-item">Eye Care</div>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="drop-group">
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            
                         </div>
+                        
+                        
                     </div>
-                    <div class="dropdown-item">
-                        Body Care
-                        <span class="arrow">›</span>
-                        <div class="sub-dropdown">
-                            <div class="sub-item">Body Lotions</div>
-                            <div class="sub-item">Body Wash</div>
-                            <div class="sub-item">Hand Care</div>
-                            <div class="sub-item">Foot Care</div>
-                            <div class="sub-item">Sun Protection</div>
-                        </div>
-                    </div>
-                    <div class="dropdown-item">
-                        Makeup
-                        <span class="arrow">›</span>
-                        <div class="sub-dropdown">
-                            <div class="sub-item">Foundation</div>
-                            <div class="sub-item">Lipstick</div>
-                            <div class="sub-item">Eye Makeup</div>
-                            <div class="sub-item">Blush</div>
-                            <div class="sub-item">Brushes & Tools</div>
-                        </div>
-                    </div>
+                    
                 </div>
-            </div>
-            <div class="category-item">
-                <button class="category-button">
-                    Cosmetics and skin care
-                    <span class="arrow">›</span>
-                </button>
-                <div class="dropdown-content">
-                    <div class="dropdown-item">
-                        Facial Care
+
+                <div class="category-item">
+                    <button class="category-button">
+                        Cosmetics and skin care
                         <span class="arrow">›</span>
-                        <div class="sub-dropdown">
-                            <div class="sub-item">Cleansers</div>
-                            <div class="sub-item">Moisturizers</div>
-                            <div class="sub-item">Serums</div>
-                            <div class="sub-item">Face Masks</div>
-                            <div class="sub-item">Eye Care</div>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="drop-group">
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            
                         </div>
+                        
+                        
                     </div>
-                    <div class="dropdown-item">
-                        Body Care
-                        <span class="arrow">›</span>
-                        <div class="sub-dropdown">
-                            <div class="sub-item">Body Lotions</div>
-                            <div class="sub-item">Body Wash</div>
-                            <div class="sub-item">Hand Care</div>
-                            <div class="sub-item">Foot Care</div>
-                            <div class="sub-item">Sun Protection</div>
-                        </div>
-                    </div>
-                    <div class="dropdown-item">
-                        Makeup
-                        <span class="arrow">›</span>
-                        <div class="sub-dropdown">
-                            <div class="sub-item">Foundation</div>
-                            <div class="sub-item">Lipstick</div>
-                            <div class="sub-item">Eye Makeup</div>
-                            <div class="sub-item">Blush</div>
-                            <div class="sub-item">Brushes & Tools</div>
-                        </div>
-                    </div>
+                    
                 </div>
-            </div>
-            <div class="category-item">
-                <button class="category-button">
-                    Cosmetics and skin care
-                    <span class="arrow">›</span>
-                </button>
-                <div class="dropdown-content">
-                    <div class="dropdown-item">
-                        Facial Care
+
+                <div class="category-item">
+                    <button class="category-button">
+                        Cosmetics and skin care
                         <span class="arrow">›</span>
-                        <div class="sub-dropdown">
-                            <div class="sub-item">Cleansers</div>
-                            <div class="sub-item">Moisturizers</div>
-                            <div class="sub-item">Serums</div>
-                            <div class="sub-item">Face Masks</div>
-                            <div class="sub-item">Eye Care</div>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="drop-group">
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            
                         </div>
+                        
+                        
                     </div>
-                    <div class="dropdown-item">
-                        Body Care
-                        <span class="arrow">›</span>
-                        <div class="sub-dropdown">
-                            <div class="sub-item">Body Lotions</div>
-                            <div class="sub-item">Body Wash</div>
-                            <div class="sub-item">Hand Care</div>
-                            <div class="sub-item">Foot Care</div>
-                            <div class="sub-item">Sun Protection</div>
-                        </div>
-                    </div>
-                    <div class="dropdown-item">
-                        Makeup
-                        <span class="arrow">›</span>
-                        <div class="sub-dropdown">
-                            <div class="sub-item">Foundation</div>
-                            <div class="sub-item">Lipstick</div>
-                            <div class="sub-item">Eye Makeup</div>
-                            <div class="sub-item">Blush</div>
-                            <div class="sub-item">Brushes & Tools</div>
-                        </div>
-                    </div>
+                    
                 </div>
-            </div>
-            <div class="category-item">
-                <button class="category-button">
-                    Cosmetics and skin care
-                    <span class="arrow">›</span>
-                </button>
-                <div class="dropdown-content">
-                    <div class="dropdown-item">
-                        Facial Care
+
+                <div class="category-item">
+                    <button class="category-button">
+                        Cosmetics and skin care
                         <span class="arrow">›</span>
-                        <div class="sub-dropdown">
-                            <div class="sub-item">Cleansers</div>
-                            <div class="sub-item">Moisturizers</div>
-                            <div class="sub-item">Serums</div>
-                            <div class="sub-item">Face Masks</div>
-                            <div class="sub-item">Eye Care</div>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="drop-group">
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            
                         </div>
+                        
+                        
                     </div>
-                    <div class="dropdown-item">
-                        Body Care
-                        <span class="arrow">›</span>
-                        <div class="sub-dropdown">
-                            <div class="sub-item">Body Lotions</div>
-                            <div class="sub-item">Body Wash</div>
-                            <div class="sub-item">Hand Care</div>
-                            <div class="sub-item">Foot Care</div>
-                            <div class="sub-item">Sun Protection</div>
-                        </div>
-                    </div>
-                    <div class="dropdown-item">
-                        Makeup
-                        <span class="arrow">›</span>
-                        <div class="sub-dropdown">
-                            <div class="sub-item">Foundation</div>
-                            <div class="sub-item">Lipstick</div>
-                            <div class="sub-item">Eye Makeup</div>
-                            <div class="sub-item">Blush</div>
-                            <div class="sub-item">Brushes & Tools</div>
-                        </div>
-                    </div>
+                    
                 </div>
-            </div>
-            <!-- ... (Other categories remain the same) ... -->
+
+                <div class="category-item">
+                    <button class="category-button">
+                        Cosmetics and skin care
+                        <span class="arrow">›</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="drop-group">
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="category-item">
+                    <button class="category-button">
+                        Cosmetics and skin care
+                        <span class="arrow">›</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="drop-group">
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="category-item">
+                    <button class="category-button">
+                        Cosmetics and skin care
+                        <span class="arrow">›</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="drop-group">
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="category-item">
+                    <button class="category-button">
+                        Cosmetics and skin care
+                        <span class="arrow">›</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="drop-group">
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="category-item">
+                    <button class="category-button">
+                        Cosmetics and skin care
+                        <span class="arrow">›</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="drop-group">
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="category-item">
+                    <button class="category-button">
+                        Cosmetics and skin care
+                        <span class="arrow">›</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="drop-group">
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="group">
+                                <h3>financail</h3>
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#">
+                                    Facial Care
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+
+
+
+
+
+
+
+             </div>
         </nav>
     </div>
 
+    <main>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="card">
+                        <h3>The Lantern World</h3>
+                        <p>Sale: 0.25 $</p>
+                        <img src="https://cbu01.alicdn.com/img/ibank/O1CN01BAycpq1Xr3elu9dRs_!!2217808182976-0-cib.jpg" alt="Product Image">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card">
+                        <h3>Bedroom Bed</h3>
+                        <p>Sale: 0.15 $</p>
+                        <img src="https://cbu01.alicdn.com/img/ibank/O1CN01kwgRmw1erEyu6bGgk_!!941433924-0-cib.jpg" alt="Product Image">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card">
+                        <h3>Eyebrow Tweezers</h3>
+                        <p>Sale: 0.35 $</p>
+                        <img src="https://cbu01.alicdn.com/img/ibank/O1CN01XQAraa1Bs2yIzV5oT_!!0-0-cib.jpg" alt="Product Image">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card">
+                        <h3>Disposable Eyelashes</h3>
+                        <p>Sale: 0.50 $</p>
+                        <img src="https://cbu01.alicdn.com/img/ibank/O1CN01c7N1BR2GnXJidZk3c_!!2211955939060-0-cib.jpg" alt="Product Image">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card">
+                        <h3>Moisturizing Cream</h3>
+                        <p>Sale: 0.45 $</p>
+                        <img src="https://cbu01.alicdn.com/img/ibank/O1CN01ZsayYX1Ke9QMzrDt5_!!2211051561188-0-cib.jpg" alt="Product Image">
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </main>
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-
-   <script src="../js/home.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script> 
+    <script src="../js/home.js"></script>
 </body>
 </html>
 

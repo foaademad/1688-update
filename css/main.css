@@ -1,0 +1,24 @@
+:root {
+    --background-color-body: #ececec;
+    --background-input: #36c7f6;
+    --background-hover: #1e7191;
+
+}
+
+body {
+    background-color:var(--background-color-body);
+    font-family:'Courier New', Courier, monospace ;
+    transition: all 0.3s ease-in-out;
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+/* body[dir="rtl"]{
+    background-color: red;
+} */
+/* body[dir="rtl"] .dropdown-menu {
+    background-color: red;
+} */
