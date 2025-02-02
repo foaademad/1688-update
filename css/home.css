@@ -465,3 +465,37 @@ main .swiper-container .swiper-button-next:hover, main .swiper-container .swiper
 }
 
 
+
+
+
+
+/* ============================================================= */
+/* calculator page  */
+
+.calculator .sidebar {
+    background: white;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.calculator .sidebar h6 {
+    padding: 10px 0;
+    border-bottom: 2px solid #ddd;
+}
+.calculator h4 {
+    color: #333;
+    font-weight: bold;
+}
+.calculator label {
+    font-weight: bold;
+}
+.calculator .form-control,.calculator .form-select {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+.calculator .form-control:focus, .calculator .form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
