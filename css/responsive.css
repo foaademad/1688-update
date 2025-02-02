@@ -29,8 +29,12 @@
 }
 
 @media (max-width: 576px) {
+    main .swiper-container {
+        width: 90%;
+
+    }
     .swiper-container {
-        height: 250px; 
+        height: 250px; /* تقليل الارتفاع في الشاشات الصغيرة جدًا */
     }
 
     .card {
@@ -39,4 +43,5 @@
     .top-mini-header {
         padding: 0 10px;
      }
+
 }

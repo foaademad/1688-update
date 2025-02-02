@@ -7,7 +7,9 @@
 }
 
 
-
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    --bs-gutter-x: 0rem;
+}
 
 
 .top-mini-header{
@@ -366,18 +368,22 @@
 /* ============================================================== */
 /* main  */
 /* swiper  */
-/* General swiper container settings */
-.swiper-container {
-    width: 80%;
+main .swiper-container {
     overflow: hidden;
     position: relative;
-
-    height: 400px; /* يمكن تعديل الارتفاع حسب الحاجة */
-    margin: 20px auto; /* لضمان أن يكون العنصر في منتصف الصفحة */
+    
+    height: 400px; 
+    margin: 45px auto; 
 }
+main .swiper-container .swiper-wrapper {
 
+    height: auto;
+}
+main .swiper-container h2 span{
+    font-weight: 700;
+}
 /* Style for the individual swiper slides */
-.swiper-slide {
+main .swiper-container .swiper-slide {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -385,26 +391,26 @@
 }
 
 /* Style for the card inside each swiper slide */
-.card {
+main .swiper-container .card {
     width: 100%;
-    max-width: 300px; /* يمكنك تغيير العرض حسب احتياجاتك */
+    max-width: 250px; /* يمكنك تغيير العرض حسب احتياجاتك */
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Hover effect for the card */
-.card:hover {
+main .swiper-container .card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Styling the image inside the card */
-.card img {
+main .swiper-container .card img {
     width: 100%;
     height: auto;
     border-radius: 8px;
@@ -412,7 +418,7 @@
 }
 
 /* Styling the card's title */
-.card h3 {
+main .swiper-container .card h3 {
     font-size: 1.2rem;
     color: #333;
     margin-top: 10px;
@@ -420,14 +426,14 @@
 }
 
 /* Styling the sale price in the card */
-.card p {
+main .swiper-container .card p {
     font-size: 1rem;
     color: #007bff;
     margin-top: 10px;
 }
 
 /* Pagination buttons */
-.swiper-pagination {
+main .swiper-container .swiper-pagination {
     position: absolute;
     bottom: 10px;
     left: 0;
@@ -436,7 +442,7 @@
 }
 
 /* Style for pagination dots */
-.swiper-pagination-bullet {
+main .swiper-container .swiper-pagination-bullet {
     background-color: #007bff;
     opacity: 0.7;
 }
@@ -446,15 +452,15 @@
 }
 
 /* Navigation buttons */
-.swiper-button-next, .swiper-button-prev {
+main .swiper-container .swiper-button-next, main .swiper-container .swiper-button-prev {
     color: #007bff;
-    background-color: rgba(255, 255, 255, 0.6);
+    /* background-color: rgba(255, 255, 255, 0.6); */
     padding: 10px;
     border-radius: 50%;
 }
 
-.swiper-button-next:hover, .swiper-button-prev:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+main .swiper-container .swiper-button-next:hover, main .swiper-container .swiper-button-prev:hover {
+    /* background-color: rgba(255, 255, 255, 0.9); */
     color: #0056b3;
 }
 

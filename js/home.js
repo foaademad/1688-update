@@ -175,14 +175,20 @@ const swiper = new Swiper('.swiper-container', {
         prevEl: '.swiper-button-prev',
     },
     breakpoints: {
-        640: {
+        320: {
             slidesPerView: 1,
         },
-        768: {
+        640: {
             slidesPerView: 2,
         },
-        1024: {
+        768: {
             slidesPerView: 3,
+        },
+        1024: {
+            slidesPerView: 4,
+        },
+        1200: {
+            slidesPerView: 5,
         },
     },
 });
