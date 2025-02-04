@@ -16,6 +16,10 @@
     .sidebar {
         display: none;
     }
+    /* .calculator page  */
+    .menu-container{
+        display: none;
+    }
   }
   /* swiper  */
 @media (max-width: 768px) {
@@ -46,7 +50,6 @@
 
      /* calculator  */
      .calculator{
-       
-        padding: 20px;
+        padding: 10px;
      }
 }

@@ -99,69 +99,8 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 });
 
 
-
-
-// change direction of website 
-
-
-const translations = {
-    en: {
-
-    },
-    ar: {
-       
-
-
-    },
-
-};
-
-function setLanguage(language) {
-    const textElements = translations[language];
-
-    // العثور على جميع العناصر التي تحتوي على خاصية data-translate
-    const translateElements = document.querySelectorAll("[data-translate]");
-
-    translateElements.forEach((element) => {
-        const keyOfLanguage = element.getAttribute("data-translate"); // الحصول على المفتاح
-        if (textElements[keyOfLanguage]) {
-            element.textContent = textElements[keyOfLanguage]; // تعيين النص بناءً على المفتاح
-        }
-    });
-    currentLanguage = language; // Update the current language
-    localStorage.setItem("language", language); // تخزين اللغة المختارة في localStorage
-
-    const dropdowns = document.querySelectorAll(".dropdown-menu");
-
-    if (language === "ar") {
-        document.documentElement.setAttribute("lang", "ar");
-        document.body.dir = "rtl";
-        dropdowns.forEach((dropdown) => {
-            dropdown.classList.remove("dropdown-menu-lg-end");
-            dropdown.classList.add("dropdown-menu-lg-start");
-        });
-    } else {
-        document.documentElement.setAttribute("lang", "en");
-        document.body.dir = "ltr";
-        dropdowns.forEach((dropdown) => {
-            dropdown.classList.remove("dropdown-menu-lg-start");
-            dropdown.classList.add("dropdown-menu-lg-end");
-        });
-    }
-}
-
-
-// استعادة اللغة المخزنة عند تحميل الصفحة
-window.onload = function () {
-    const savedLanguage = localStorage.getItem("language") || "en"; // استخدام اللغة المحفوظة أو الافتراضية (en)
-    setLanguage(savedLanguage);
-
-    
-};
-
 // ==============================================================
 // swiper
-
 
 const swiper = new Swiper('.swiper-container', {
     slidesPerView: 3,
@@ -174,6 +113,11 @@ const swiper = new Swiper('.swiper-container', {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
+    autoplay: {
+        delay: 2000, // تأخير بين كل انتقال (3 ثوانٍ)
+        disableOnInteraction: false, // استمر في التشغيل التلقائي حتى عند التفاعل
+    },
+    loop: true, // تشغيل اللوب حتى لا يتوقف عند آخر سلايد
     breakpoints: {
         320: {
             slidesPerView: 1,
@@ -195,3 +139,60 @@ const swiper = new Swiper('.swiper-container', {
 
 
 
+// ===================================================
+//  add cart to fav 
+document.addEventListener('DOMContentLoaded', function () {
+    const wishlistCount = document.querySelector('.wishlist-count');
+    const cartCount = document.querySelector('.cart-count');
+
+    // تحميل العدد المحفوظ من localStorage أو البدء من 0 إذا لم يكن موجودًا
+    let wishlistCounter = parseInt(localStorage.getItem('wishlistCount')) || 0;
+    let cartCounter = parseInt(localStorage.getItem('cartCount')) || 0;
+    wishlistCount.textContent = wishlistCounter;
+    cartCount.textContent = cartCounter;
+
+    // تحميل حالة كل زر قلب وزر سلة من localStorage
+    document.querySelectorAll('.heart-button, .cart-button').forEach((button, index) => {
+        const isClicked = localStorage.getItem(`${button.classList.contains('heart-button') ? 'heartButton' : 'cartButton'}${index}`) === 'true';
+
+        if (isClicked) {
+            button.classList.add('active'); // تطبيق اللون إذا تم النقر من قبل
+            button.setAttribute('data-clicked', 'true');
+        }
+
+        // إضافة حدث النقر على زر القلب أو زر السلة
+        button.addEventListener('click', function () {
+            const isClicked = button.getAttribute('data-clicked') === 'true';
+            const isHeartButton = button.classList.contains('heart-button');
+
+            if (!isClicked) {
+                // إذا لم يتم النقر من قبل
+                button.setAttribute('data-clicked', 'true');
+                button.classList.add('active'); // تغيير اللون
+                if (isHeartButton) {
+                    wishlistCounter++; // زيادة العدد في القائمة المفضلة
+                } else {
+                    cartCounter++; // زيادة العدد في السلة
+                }
+            } else {
+                // إذا تم النقر من قبل
+                button.setAttribute('data-clicked', 'false');
+                button.classList.remove('active'); // إعادة اللون إلى الطبيعي
+                if (isHeartButton) {
+                    wishlistCounter--; // تقليل العدد في القائمة المفضلة
+                } else {
+                    cartCounter--; // تقليل العدد في السلة
+                }
+            }
+
+            // تحديث العدد في الناف بار
+            wishlistCount.textContent = wishlistCounter;
+            cartCount.textContent = cartCounter;
+
+            // حفظ العدد وحالة الزر في localStorage
+            localStorage.setItem('wishlistCount', wishlistCounter);
+            localStorage.setItem('cartCount', cartCounter);
+            localStorage.setItem(`${isHeartButton ? 'heartButton' : 'cartButton'}${index}`, button.getAttribute('data-clicked'));
+        });
+    });
+});

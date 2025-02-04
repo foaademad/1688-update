@@ -84,7 +84,7 @@
 .search-container {
     flex: 1;
     max-width: 600px;
-    margin: 0 20px;
+    margin: 0 10px;
     position: relative;
 }
 
@@ -183,6 +183,7 @@
     width: auto;
     gap: 30px;
     padding: 10px;
+    text-align: start;
 }
 .dropdown-content .drop-group .dropdown-item {
     font-size: 18px;
@@ -393,14 +394,19 @@ main .swiper-container .swiper-slide {
 /* Style for the card inside each swiper slide */
 main .swiper-container .card {
     width: 100%;
-    max-width: 250px; /* يمكنك تغيير العرض حسب احتياجاتك */
-    background-color: #fff;
+    max-width: 250px;
+    /*يمكنكتغييرالعرضحسباحتياجاتك*/background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     text-align: center;
     padding: 10px;
+    height: 340px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -webkit-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -moz-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -ms-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -o-transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Hover effect for the card */
@@ -465,24 +471,80 @@ main .swiper-container .swiper-button-next:hover, main .swiper-container .swiper
 }
 
 
+ /* add number for count in the cart  */
+ .image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay-buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .overlay-buttons {
+    opacity: 1;
+}
+
+.heart-button, .cart-button {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.heart-button:hover, .cart-button:hover {
+    background: rgba(255, 255, 255, 1);
+}
 
 
-
+.heart-button.active svg {
+    fill: red; /* تغيير لون القلب إلى الأحمر */
+    stroke: red; /* تغيير لون الحدود إلى الأحمر */
+}
+.cart-button.active svg {
+    fill: green; /* تغيير لون السلة إلى الأخضر */
+    stroke: green; /* تغيير لون الحدود إلى الأخضر */
+}
 
 /* ============================================================= */
 /* calculator page  */
 
 .calculator .sidebar {
     background: white;
-    margin: 10px;
+    margin-right: 15px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.calculator .sidebar h6 {
-    padding: 10px 0;
+.calculator .sidebar a{
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
     border-bottom: 2px solid #ddd;
+    cursor: pointer;
+
 }
+
+.calculator nav {
+    padding: 15px 5px;
+    background-color: #ffffffbb;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
 .calculator h4 {
     color: #333;
     font-weight: bold;
@@ -499,3 +561,81 @@ main .swiper-container .swiper-button-next:hover, main .swiper-container .swiper
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+.header-bottom__menu-category__button {
+    padding:10px;
+    cursor: pointer;
+    background-color: var(--background-hover-icon);
+
+}
+
+/* slide bar in .calculator  */
+
+.menu-icon {
+    
+    font-size: 24px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: fixed;
+    top: 160px;
+    left: 280px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* مخفية في البداية */
+    z-index: 1000;
+}
+
+.menu-header {
+    background: #3e80f3;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.dropdown-menu {
+   
+    --bs-dropdown-padding-y: 0rem;
+}
+
+/* ================================================================================== */
+/* FAQ page  */
+.faq-section {
+    /* background-color: white; */
+    padding: 20px;
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    margin-bottom: 20px;
+}
+.faq-section div{
+    margin: 20px 0;
+}
+.faq-section p{
+    font-size: 17px;
+    padding: 0 10px;
+}
+.faq-section h5{
+    font-weight: 600;
+}
+.orders-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+.faq-section ul li {
+    list-style:unset;
+    font-size: 17px;
+
+}
+
+
+
+
+

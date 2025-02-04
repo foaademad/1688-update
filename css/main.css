@@ -1,20 +1,35 @@
 :root {
     --background-color-body: #ececec;
     --background-input: #36c7f6;
+    --background-hover-icon: #d8eff860;
     --background-hover: #1e7191;
 
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+li{
+    list-style: none;
+}
 body {
     background-color:var(--background-color-body);
     font-family:'Courier New', Courier, monospace ;
     transition: all 0.3s ease-in-out;
 }
-a {
-    text-decoration: none;
-    color: #333;
-}
+body[dir="ltr"]{
+    text-align: start;
+    direction: ltr;
 
+
+}
 
 /* body[dir="rtl"]{
     background-color: red;
