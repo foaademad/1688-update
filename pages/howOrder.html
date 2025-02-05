@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ</title>
+    <title>how to order</title>
     <!-- font style  -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <!-- bootstrap style  -->
@@ -1460,92 +1460,155 @@
 
         <div class="calculator container mt-4">
             <nav>
-                <a href="#">Home</a> / <a href="#" style="color: rgba(0, 0, 0, 0.555);">FAQ</a>
+                <a href="#">Home</a> / <a id="breadcrumb" style="color: rgba(0, 0, 0, 0.555);">How to Order</a>
             </nav>
-            <div class=" d-flex  mt-4">
+            <div class=" d-flex  mt-4 howToOrder">
                 <div class="h-100">
                     <div class="sidebar">
-                        <a> <strong>How to Order</strong> </a>
-                        <a><strong>How to Pay</strong></a>
-                        <a><strong>Goods Delivery</strong></a>
-                        <a><strong>Guarantees</strong></a>
+                        <a onclick="showContent('order', 'How to Order', this)" class="active-link "><strong>How to Order</strong></a>
+                        <a onclick="showContent('pay', 'How to Pay', this)"><strong>How to Pay</strong></a>
+                        <a onclick="showContent('delivery', 'Goods Delivery', this)"><strong>Goods Delivery</strong></a>
+                        <a onclick="showContent('guarantees', 'Guarantees', this)"><strong>Guarantees</strong></a>
                     </div>
+                    
                 </div>
                 <div style="flex: 1;">
-                    <h3><strong>FAQ</strong></h3>
-                    <div class="faq-section">
-                        <div>
-                            <h5>1. HOW DOES ONLINE STORE WORK?</h5>
-                            <ul>
-                                <li>You are looking for goods and add them to the cart.</li>
-                                <li>You place an order, entering all necessary data.</li>
-                                <li>You pay for the order.</li>
-                                <li>We buy goods from suppliers.</li>
-                                <li>We check goods for compliance with their description.</li>
-                                <li>We arrange goods delivery to the buyer.</li>
-                            </ul>
-                        </div>
+                    <div id="order" class="content-section active">
+                        <h3><strong>How to order</strong></h3>
+                        <p>To place an order on our website, you should:</p>
+                        <div class="faq-section">
+                            <div>
+                                <h6>1. Register on website.</h6>
+                                <p>
+                                    You can search and select products on the site without registration, but if you decide to buy something, you must register. After that, you can place orders. This is necessary for delivering your purchase to you.
+                                </p>
+                                <img src="https://clip.otcommerce.com/files/b6/6a/Home%20%281%29.png" alt="" srcset="" width="100%">
+                                <p>To register, please enter username, password and email address. You can also go through registration process using these social networks, if you prefer.
+                                </p>
+                                <br>
+                                <p>
+                                <strong>Important!</strong>  Try to create a complex password with a combination of letters and numbers (at least 6 characters). This will protect your account.
 
-                        <div>
-                            <h5>2. COULD NOT FIND NECESSARY PRODUCT, WHAT TO DO?</h5>
-                            <p>Contact online store for help if you could not find the product you wanted to purchase. You can email us, contact us via social networks, or use our website operator for assistance.</p>
+                                </p>
+                                <br>
+                                <p>
+                                    Your personal account on the site will be available to you after registration. Here you can enter personal data for goods delivery, check information about your orders, their statuses, your account and personal discounts. You can also send a message to site administrators if you have any questions.
+                                </p>
+                                <img src="https://clip.otcommerce.com/files/49/c9/Profile.png" alt="" srcset="" width="100%">
+                            </div>
+                            <br>
+
+                            <div>
+                                <h6>2. Choose goods for purchase.</h6>
+                                <p>Before you order, you should select items you like and add them to the cart. You can select items from online store catalog or from search bar of online shop. Then you need to open goods card and set necessary configurations: color, size and other characteristics. Please note that price of some goods can change. You can add goods to the cart now clicking «Add to cart» button. A confirmation message will appear on the screen.</p>
+                                <img src="https://clip.otcommerce.com/files/b6/63/good.png" alt="" srcset="" width="100%">
+                                <p>You can leave a comment to the order for operator with details if there are any difficulties in choosing the right product characteristics.
+                                </p>
+                                <br>
+                                <p>
+                                    Besides, you can add goods you like into “Favourites”. They will be saved in this section, and you can easily find them, watch them again and order them at any convenient time.
+                                </p>
+                                <br>
+                                <p>
+                                <strong>Important!</strong> Exact delivery cost is calculated based on the exact weight of your order. Purchased items are weighed when they are delivered to the warehouse in China and delivery cost is recalculated on the basis of obtained data.
+                                </p>
+                            
+                            </div>
+                            <br>
+
+                            <div>
+
+                                <h6>3. Order</h6>
+                                <p>Open the cart and select all goods you want to order by clicking check mark next to them. Then click “Checkout” button. </p>
+                                <img src="../asset/Orders.png" alt="" width="100%" class="mb-3" >
+                                <br>
+                                <p>
+                                    Fill in all necessary fields then for carrying out goods delivery and click “Confirm order” button. You can pay it after that.
+                                </p><br>
+                                <p>
+                                    <strong>Note:</strong> you can use “Quick order” button in the product card. It will save your time making an order.
+                                </p><br>
+                                <img src="https://clip.otcommerce.com/files/ce/41/png%20%2816%29.png" alt="" srcset="" width="100%">
+                            </div>
+
+                        
+                            
                         
                         </div>
-                        <div>
-
-                            <h5>3. HOW TO FIND OUT YOUR ORDER STATUS?</h5>
-                            <p>Enter the "Orders" section in your personal account to check your order status. You will see a table with your orders and their statuses.</p>
-                            <img src="../asset/Orders.png" alt="" width="100%" class="mb-3" >
-                        </div>
-
-                        <div class="faq-item">
-                            <h5 class="question">4. DOES THE PHOTO IN THE CARD MEET REAL PRODUCT?</h5>
-                            <p class="answer">
-                                Online store employees check goods for their compliance with specified characteristics and production defects upon receipt in the warehouse. Goods may be replaced if non-conformity is detected.
-                            </p>
-                            <p class="answer">
-                                Therefore, you will receive exactly the thing indicated on Chinese seller's photo.
-                            </p>
-                            <p class="important">
-                                Important! <span>Some sellers use professional photographs of their products, so actual colors can be slightly different: lighter or darker.</span>
-                            </p>
-                        </div>
-                
-                        <div class="faq-item">
-                            <h5 class="question">5. HOW TO TRACK THE PARCEL?</h5>
-                            <p class="answer">
-                                After receiving goods in our warehouse we will provide you a tracking number to track your order delivery.
-                            </p>
-                        </div>
-                
-                        <div class="faq-item">
-                            <h5 class="question">6. WHY DO I NEED A PERSONAL CUSTOMER'S ACCOUNT?</h5>
-                            <p class="answer">
-                                Your personal account stores all necessary information for processing and delivering your orders. Here you can also add funds, check purchase history, trace stages of order execution and clarify information on any order you are interested in.
-                            </p>
-                            <p class="answer">
-                                You can always change your personal data and contact information.
-                            </p>
-                            <p class="answer">
-                                Registration on the site will allow you to carry out all subsequent orders much faster. You do not have to fill in delivery details again. They will be automatically taken from your personal account.
-                            </p>
-                        </div>
-                
-                        <div class="faq-item">
-                            <h5 class="question">7. WHAT IS A CUSTOMER'S PAYMENT ACCOUNT?</h5>
-                            <p class="answer">
-                                This is your personal customer's account in our online store. You can add funds here and use them to pay for your orders.
-                            </p>
-                        </div>
-                        
-                    
                     </div>
+
+                    <div id="pay" class="content-section">
+                        <h3><strong>How to pay</strong></h3>
+                        <p>You can pay the order by any payment method specified during order processing.</p>
+                        <p>
+                            You can also deposit funds in your personal account and use it to pay your orders.
+                        </p>
+                        <div class="faq-section">
+                            <div>
+                               
+                                <img src="https://clip.otcommerce.com/files/92/e2/Account.png" alt="" srcset="" width="100%">
+                                <p>You can track money flow for all time using the online shop in «Payment History» section.</p>
+                                <br>
+                               
+                                <img src="https://clip.otcommerce.com/files/f1/11/Account%20-%20%D1%81%D1%87%D0%B5%D1%82.png" alt="" srcset="" width="100%">
+                            </div>
+       
+                        </div>
+                    </div>
+
+                    <div id="delivery" class="content-section">
+                        <h3><strong>Goods delivery</strong></h3>
+                        <p>When ordering goods you have to pay:</p>
+                        <p>
+                            1. Selected item cost.
+                        </p>
+                        
+                        <p>2. HOW DOES ONLINE STORE WORK?</p>
+                        <ul>
+                            <li>Internal delivery — goods delivery from seller to warehouse in China. Paid separately, may be free.</li>
+                            <li>External delivery — goods delivery from warehouse in China to the buyer.</li>
+                            
+                        </ul>
+                        <img src="https://clip.otcommerce.com/files/eb/08/Delivery.png" alt="" srcset="" width="100%">
+                        <p> 
+                            You can choose any convenient way to deliver goods when ordering. Chosen delivery option will determine its cost and the time it takes to receive goods.
+                        </p>
+                        <br>
+                        <p> 
+                            You can enter personal data for delivery (full name, address, phone number, etc.) in your personal account by registering on the site.
+                        </p>
+                        <img src="https://clip.otcommerce.com/files/e3/f9/png%20%2815%29.png" alt="" srcset="" width="100%">
+
+                        
+                        <p>
+                            <strong>Note!</strong>
+                            It’s impossible to change delivery option or address in the placed order.
+                        </p>
+                    </div>
+
+                    <div id="guarantees" class="content-section">
+                        <h3><strong>Guarantees </strong></h3>
+                        <p>2. HOW DOES ONLINE STORE WORK?</p>
+                        <ul>
+                            <li>We help searching and selecting goods, as well as providing all available information regarding online shop operation at customers’ request.
+                            </li>
+                            <li>We guarantee that all funds transferred by buyers will be used for purchasing and delivering their orders.</li>
+                            <li>We offer solutions for the exchange or refund to buyer’s personal account on the site if we find discrepancy in goods in the warehouse.</li>
+                            <li>We are fully liable if, for any reason, the buyer does not receive the order.</li>
+                            
+                        </ul>
+                        <p>
+                            <strong>Important!</strong>
+                            We are not liable if the buyer does not like purchased goods. We cannot guarantee colors conformity and we are not responsible for products quality. We are responsible only for our online shop operation and goods delivery to the buyer.
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/direction&language.js"></script>
-    <script src="../js/FAQ.js"></script>
+    <script src="../js/howToOrder.js"></script>
 </body>
 </html>

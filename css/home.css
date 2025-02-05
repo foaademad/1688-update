@@ -604,6 +604,8 @@ main .swiper-container .swiper-button-next:hover, main .swiper-container .swiper
     --bs-dropdown-padding-y: 0rem;
 }
 
+
+
 /* ================================================================================== */
 /* FAQ page  */
 .faq-section {
@@ -617,10 +619,10 @@ main .swiper-container .swiper-button-next:hover, main .swiper-container .swiper
     margin: 20px 0;
 }
 .faq-section p{
-    font-size: 17px;
+    font-size: 15px;
     padding: 0 10px;
 }
-.faq-section h5{
+.faq-section h6{
     font-weight: 600;
 }
 .orders-section {
@@ -635,7 +637,34 @@ main .swiper-container .swiper-button-next:hover, main .swiper-container .swiper
 
 }
 
+/* ======================================= */
+
+
+.howToOrder .sidebar a {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s;
+}
+
+.howToOrder .sidebar a.active-link {
+    background-color: var(--background-hover);
+    color: white;
+}
 
 
 
+.howToOrder .content-section {
+    display: none;
+}
 
+.howToOrder .content-section.active {
+    display: block;
+}
+.content-section ul li {
+    list-style:unset;
+    font-size: 17px;
+
+}
