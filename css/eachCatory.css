@@ -1,0 +1,279 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.filter-section {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 30px;
+    align-items: center;
+    background-color: #e8f5e9;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.sort-by, .shown {
+    display: flex;
+    align-items: center;
+}
+
+select, input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.search-box {
+    display: flex;
+}
+
+.search-box input {
+    width: 250px;
+}
+
+.search-box button {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+/* أسلوب لإخفاء المحتوى عند البداية */
+.filter-content {
+    display: none;
+    padding-left: 10px;
+}
+
+/* تغيير شكل الأسهم عند النقر */
+.filter-title.active .filter-arrow {
+    transform: rotate(-180deg);
+}
+.sidebar {
+    width: 250px;
+    float: left;
+    margin-right: 20px;
+}
+.subCatog .checkbox-group{
+    display: flex;
+    flex-direction: column;
+}
+.subCatog .checkbox-group a{
+    cursor: pointer;
+    margin-bottom: 5px;
+    color: #141414;
+    font-size: 14px;
+    text-decoration: none;
+
+}
+.filter-group {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.filter-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.filter-content {
+    margin-top: 10px;
+}
+
+.price-range {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.price-range input {
+    width: 80px;
+    padding: 5px;
+    margin: 0 5px;
+}
+
+.radio-group {
+    margin-top: 10px;
+}
+
+.radio-group label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.button-group button {
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+
+.apply-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.reset-btn {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-left: 270px;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.product-info {
+    padding: 15px;
+}
+
+.product-title {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.product-price {
+    font-weight: bold;
+    color: #111;
+}
+
+/* Modal styles */
+.filter-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.filter-icon {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 24px;
+    margin-left: 15px;
+}
+.filter-modal .sort-by {
+    display: flex;
+}
+/* Responsive styles */
+@media (max-width: 786px) {
+    .sidebar {
+        display: none;
+    }
+
+    .product-grid {
+        margin-left: 0;
+    }
+
+    .filter-icon {
+        display: flex;
+    }
+
+    .sort-by {
+        display: none;
+    }
+
+    .search-box input {
+        width: 150px;
+    }
+}
+@media (max-width: 425px) {
+    .filter-section {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        padding: 5px 10px;
+    }
+    .shown{
+        display: none;
+    }
+    .sort-by {
+        display: block;
+    }
+
+}

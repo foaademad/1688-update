@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Listing</title>
+    <link rel="stylesheet" href="../css/eachCatory.css" />
+  </head>
+  <body>
+    <div class="filter-section">
+      <div class="sort-by">
+        <span>Sort by:</span>
+        <select id="sort-select">
+          <option value="price-asc">Price in ascending order</option>
+          <option value="price-desc">Price in descending order</option>
+          <option value="popularity">Popularity</option>
+          <option value="newest">Newest arrivals</option>
+        </select>
+      </div>
+
+      <div class="shown">
+        <span>Shown: from 1 to 40 from 2000</span>
+      </div>
+
+      <div class="search-box">
+        <input type="text" placeholder="Search in results" />
+        <button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-search"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="filter-icon"
+        onclick="document.getElementById('filterModal').style.display='block'"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="25"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.25"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-filter"
+        >
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+        </svg>
+        Filter
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="filter-group subCatog">
+        <div class="filter-title">
+          SUBCATEGORIES
+          <span class="filter-arrow">▼</span>
+        </div>
+        <div class="filter-content">
+          <div class="checkbox-group">
+            <a href="">men's jacket</a>
+            <a href="">men's polo shirts</a>
+            <a href="">men's vests</a><a href="">men's jacket</a>
+            <a href="">men's polo shirts</a>
+            <a href="">men's vests</a><a href="">men's jacket</a>
+            <a href="">men's polo shirts</a>
+            <a href="">men's vests</a><a href="">men's jacket</a>
+            <a href="">men's polo shirts</a>
+            <a href="">men's vests</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-title">
+          PRICE
+          <span class="filter-arrow">▼</span>
+        </div>
+        <div class="filter-content">
+          <div class="price-range">
+            <input type="number" id="price-min" placeholder="Min" />
+            <span>-</span>
+            <input type="number" id="price-max" placeholder="Max" />
+          </div>
+          <div class="button-group">
+            <button class="apply-btn">Apply</button>
+            <button class="reset-btn">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-title">
+          SELLER RATING
+          <span class="filter-arrow">▼</span>
+        </div>
+        <div class="filter-content">
+          <div class="price-range">
+            <input type="text" id="rating-min" placeholder="From" />
+            <span>-</span>
+            <input type="text" id="rating-max" placeholder="To" />
+          </div>
+          <div class="button-group">
+            <button class="apply-btn">Apply</button>
+            <button class="reset-btn">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-title">
+          GOODS WITH DISCOUNT
+          <span class="filter-arrow">▼</span>
+        </div>
+        <div class="filter-content">
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="discount" value="all" /> All goods
+            </label>
+            <label>
+              <input type="radio" name="discount" value="discount" /> Goods with
+              discount
+            </label>
+          </div>
+          <div class="button-group">
+            <button class="apply-btn">Apply</button>
+            <button class="reset-btn">Reset</button>
+          </div>
+        </div>
+      </div>
+
+        <div class="filter-group">
+            <div class="filter-title">
+            GOODS ARE IN STOCK
+            <span class="filter-arrow">▼</span>
+            </div>
+            <div class="filter-content">
+            <div class="radio-group">
+                <label>
+                <input type="radio" name="stock" value="all" /> All goods
+                </label>
+                <label>
+                <input type="radio" name="stock" value="in-stock" /> Goods are in
+                stock
+                </label>
+            </div>
+            <div class="button-group">
+                <button class="apply-btn">Apply</button>
+                <button class="reset-btn">Reset</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Modal -->
+    <div id="filterModal" class="filter-modal">
+      <div class="modal-content">
+        <span
+          class="close-modal"
+          onclick="document.getElementById('filterModal').style.display='none'"
+          >&times;</span
+        >
+        <h2 style="margin-bottom: 20px">Filters</h2>
+        <div class="sort-by">
+          <span>Sort by:</span>
+          <select id="sort-select">
+            <option value="price-asc">Price in ascending order</option>
+            <option value="price-desc">Price in descending order</option>
+            <option value="popularity">Popularity</option>
+            <option value="newest">Newest arrivals</option>
+          </select>
+        </div>
+        <div class="filter-group subCatog">
+            <div class="filter-title">
+              SUBCATEGORIES
+              <span class="filter-arrow">▼</span>
+            </div>
+            <div class="filter-content">
+              <div class="checkbox-group">
+                <a href="">men's jacket</a>
+                <a href="">men's polo shirts</a>
+                <a href="">men's vests</a><a href="">men's jacket</a>
+                <a href="">men's polo shirts</a>
+                <a href="">men's vests</a><a href="">men's jacket</a>
+                <a href="">men's polo shirts</a>
+                <a href="">men's vests</a><a href="">men's jacket</a>
+                <a href="">men's polo shirts</a>
+                <a href="">men's vests</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="filter-group">
+            <div class="filter-title">
+              PRICE
+              <span class="filter-arrow">▼</span>
+            </div>
+            <div class="filter-content">
+              <div class="price-range">
+                <input type="number" id="price-min" placeholder="Min" />
+                <span>-</span>
+                <input type="number" id="price-max" placeholder="Max" />
+              </div>
+              <div class="button-group">
+                <button class="apply-btn">Apply</button>
+                <button class="reset-btn">Reset</button>
+              </div>
+            </div>
+          </div>
+    
+          <div class="filter-group">
+            <div class="filter-title">
+              SELLER RATING
+              <span class="filter-arrow">▼</span>
+            </div>
+            <div class="filter-content">
+              <div class="price-range">
+                <input type="text" id="rating-min" placeholder="From" />
+                <span>-</span>
+                <input type="text" id="rating-max" placeholder="To" />
+              </div>
+              <div class="button-group">
+                <button class="apply-btn">Apply</button>
+                <button class="reset-btn">Reset</button>
+              </div>
+            </div>
+          </div>
+    
+          <div class="filter-group">
+            <div class="filter-title">
+              GOODS WITH DISCOUNT
+              <span class="filter-arrow">▼</span>
+            </div>
+            <div class="filter-content">
+              <div class="radio-group">
+                <label>
+                  <input type="radio" name="discount" value="all" /> All goods
+                </label>
+                <label>
+                  <input type="radio" name="discount" value="discount" /> Goods with
+                  discount
+                </label>
+              </div>
+              <div class="button-group">
+                <button class="apply-btn">Apply</button>
+                <button class="reset-btn">Reset</button>
+              </div>
+            </div>
+          </div>
+    
+            <div class="filter-group">
+                <div class="filter-title">
+                GOODS ARE IN STOCK
+                <span class="filter-arrow">▼</span>
+                </div>
+                <div class="filter-content">
+                <div class="radio-group">
+                    <label>
+                    <input type="radio" name="stock" value="all" /> All goods
+                    </label>
+                    <label>
+                    <input type="radio" name="stock" value="in-stock" /> Goods are in
+                    stock
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="apply-btn">Apply</button>
+                    <button class="reset-btn">Reset</button>
+                </div>
+                </div>
+            </div>
+
+      </div>
+    </div>
+
+    <div class="product-grid">
+      <!-- Product cards in pure HTML -->
+      <div class="product-card">
+        <div
+          class="product-image"
+          style="
+            background-image: url('https://via.placeholder.com/250x200?text=T-shirt');
+          "
+        ></div>
+        <div class="product-info">
+          <div class="product-title">Summer short sleeve T-shirt for men</div>
+          <div class="product-price">1.01 $</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div
+          class="product-image"
+          style="
+            background-image: url('https://via.placeholder.com/250x200?text=Pants');
+          "
+        ></div>
+        <div class="product-info">
+          <div class="product-title">
+            Silk summer thin trend breathable pants
+          </div>
+          <div class="product-price">1.01 $</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div
+          class="product-image"
+          style="
+            background-image: url('https://via.placeholder.com/250x200?text=Shorts');
+          "
+        ></div>
+        <div class="product-info">
+          <div class="product-title">Summer trend shorts, thin brand style</div>
+          <div class="product-price">1.01 $</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div
+          class="product-image"
+          style="
+            background-image: url('https://via.placeholder.com/250x200?text=Sport+Trousers');
+          "
+        ></div>
+        <div class="product-info">
+          <div class="product-title">Thin sports silk trousers for leisure</div>
+          <div class="product-price">1.01 $</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div
+          class="product-image"
+          style="
+            background-image: url('https://via.placeholder.com/250x200?text=Sweatshirt');
+          "
+        ></div>
+        <div class="product-info">
+          <div class="product-title">
+            Demi-season double-sided velvet sweatshirt
+          </div>
+          <div class="product-price">1.01 $</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div
+          class="product-image"
+          style="
+            background-image: url('https://via.placeholder.com/250x200?text=Sexy+Tshirt');
+          "
+        ></div>
+        <div class="product-info">
+          <div class="product-title">Sexy breathable short sleeve T-shirt</div>
+          <div class="product-price">1.01 $</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div
+          class="product-image"
+          style="
+            background-image: url('https://via.placeholder.com/250x200?text=Elastic+Trousers');
+          "
+        ></div>
+        <div class="product-info">
+          <div class="product-title">
+            Silk elastic quick dry sports trousers
+          </div>
+          <div class="product-price">1.01 $</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div
+          class="product-image"
+          style="
+            background-image: url('https://via.placeholder.com/250x200?text=Men%27s+Trousers');
+          "
+        ></div>
+        <div class="product-info">
+          <div class="product-title">
+            Silk men's elastic sports thin trousers
+          </div>
+          <div class="product-price">1.01 $</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Very minimal JavaScript, just for modal functionality
+      window.onclick = function (event) {
+        var modal = document.getElementById("filterModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+      // Function to toggle filter sections
+      document.addEventListener("DOMContentLoaded", function () {
+        // حصول جميع العناصر التي تحتوي على class "filter-title"
+        const filterTitles = document.querySelectorAll(".filter-title");
+
+        // دورة على كل عنصر من عناوين الفلتر
+        filterTitles.forEach((title) => {
+          title.addEventListener("click", function () {
+            // الحصول على عنصر المحتوى المرتبط بهذا العنوان
+            const content = this.nextElementSibling;
+
+            // التبديل بين فتح وإغلاق المحتوى
+            if (content.style.display === "block") {
+              content.style.display = "none";
+              this.classList.remove("active"); // إزالة حالة النشاط
+            } else {
+              content.style.display = "block";
+              this.classList.add("active"); // إضافة حالة النشاط
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
