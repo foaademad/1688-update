@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.rtl.min.css"
+            rel="stylesheet" />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            rel="stylesheet" />
+
+        <title>Each Product</title>
+        <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/eachProduct.css">
+
+    </head>
+    <body >
+        <main>
+            <section class="product-details">
+
+                <div class="product-page">
+                    <h2>
+
+                       T-shirt
+                        
+                    </h2>
+                    <div class="rating">
+                        <span>⭐⭐⭐⭐⭐ rate</span>
+                    </div>
+
+                    <table>
+                        <tr style="background-color: #eee;">
+                            <th>price</th>
+                            <td class="d-flex gap-4 ">
+                                <div
+                                    class="d-flex flex-column  align-items-center justify-content-center">
+                                    <span class="price">
+                                        60$
+                                    </span>
+                                    <p>
+                                        1-1999 مجموعات
+                                    </p>
+                                </div>
+                                <div
+                                    class="d-flex flex-column  align-items-center justify-content-center">
+                                    <span class="price">
+                                        56$
+                                    </span>
+                                    <p>
+                                        ≥2000 مجموعات
+
+                                    </p>
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <th>color</th>
+                            <td>
+                                <div class="corlors_cards">
+                                    
+                                    <div class="cards"
+                                        onclick="showSizeTable('table1')">
+
+                                        <img
+                                            src="https://plus.unsplash.com/premium_photo-1730828573938-003e14f210f4?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8"
+                                            alt srcset>
+                                        <p>
+                                            black
+                                        </p>
+                                        <span class="quantity-badge"
+                                            id="badge1">0</span>
+                                    </div>
+                                    <div class="cards"
+                                        onclick="showSizeTable('table2')">
+
+                                        <img
+                                            src="https://plus.unsplash.com/premium_photo-1730828573938-003e14f210f4?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8"
+                                            alt srcset>
+                                        <p>
+                                            white
+                                        </p>
+                                        <span class="quantity-badge"
+                                            id="badge2">0</span>
+
+                                    </div>
+                                    <div class="cards"
+                                        onclick="showSizeTable('table3')">
+
+                                        <img
+                                            src="https://plus.unsplash.com/premium_photo-1730828573938-003e14f210f4?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8"
+                                            alt srcset>
+                                        <p>
+                                            yellow
+                                        </p>
+                                        <span class="quantity-badge"
+                                            id="badge3">0</span>
+                                    </div>
+                                    <div class="cards"
+                                        onclick="showSizeTable('table4')">
+
+                                        <img
+                                            src="https://plus.unsplash.com/premium_photo-1730828573938-003e14f210f4?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8"
+                                            alt srcset>
+                                        <p>
+                                            brown
+                                        </p>
+                                        <span class="quantity-badge"
+                                            id="badge4">0</span>
+                                    </div>
+                                    <div class="cards"
+                                        onclick="showSizeTable('table5')">
+
+                                        <img
+                                            src="https://plus.unsplash.com/premium_photo-1730828573938-003e14f210f4?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8"
+                                            alt srcset>
+                                        <p>
+                                            pink
+                                        </p>
+                                        <span class="quantity-badge"
+                                            id="badge5">0</span>
+                                    </div>
+                                    
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th></th>
+                            <td>
+                                <div id="table1" class="size-table">
+                                    <table>
+                                        <tr>
+                                            <th>Size</th>
+                                            <th>Price</th>
+                                            <th>Available Quantity</th>
+                                            <th>Requested Quantity</th>
+                                        </tr>
+                                        <tr>
+                                            <td>S</td>
+                                            <td>63.00元</td>
+                                            <td>995</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity1-S', -1, 'badge1')">-</button>
+                                                    <input type="number" id="quantity1-S" value="0" min="0" max="995" onchange="updateTotalPrice()">
+                                                    <button onclick="updateQuantity('quantity1-S', 1, 'badge1')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>M</td>
+                                            <td>63.00元</td>
+                                            <td>988</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity1-M', -1, 'badge1')">-</button>
+                                                    <input type="number" id="quantity1-M" value="0" min="0" max="988" onchange="updateTotalPrice()">
+                                                    <button onclick="updateQuantity('quantity1-M', 1, 'badge1')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>L</td>
+                                            <td>63.00元</td>
+                                            <td>991</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity1-L', -1, 'badge1')">-</button>
+                                                    <input type="number" id="quantity1-L" value="0" min="0" max="991" onchange="updateTotalPrice()">
+                                                    <button onclick="updateQuantity('quantity1-L', 1, 'badge1')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>XL</td>
+                                            <td>63.00元</td>
+                                            <td>994</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity1-XL', -1, 'badge1')">-</button>
+                                                    <input type="number" id="quantity1-XL" value="0" min="0" max="994" onchange="updateTotalPrice()">
+                                                    <button onclick="updateQuantity('quantity1-XL', 1, 'badge1')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>XXL</td>
+                                            <td>63.00元</td>
+                                            <td>991</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity1-XXL', -1, 'badge1')">-</button>
+                                                    <input type="number" id="quantity1-XXL" value="0" min="0" max="991" onchange="updateTotalPrice()">
+                                                    <button onclick="updateQuantity('quantity1-XXL', 1, 'badge1')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                
+
+                                <div id="table2" class="size-table" style="display:none;">
+                                    <table>
+                                        <tr>
+                                            <th>Size</th>
+                                            <th>Price</th>
+                                            <th>Available Quantity</th>
+                                            <th>Requested Quantity</th>
+                                        </tr>
+                                        <tr>
+                                            <td>S</td>
+                                            <td>63.00元</td>
+                                            <td>995</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity2-S', -1, 'badge2')">-</button>
+                                                    <input type="number" id="quantity2-S" value="0" min="0" max="995">
+                                                    <button onclick="updateQuantity('quantity2-S', 1, 'badge2')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>M</td>
+                                            <td>63.00元</td>
+                                            <td>988</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity2-M', -1, 'badge2')">-</button>
+                                                    <input type="number" id="quantity2-M" value="0" min="0" max="988">
+                                                    <button onclick="updateQuantity('quantity2-M', 1, 'badge2')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>L</td>
+                                            <td>63.00元</td>
+                                            <td>991</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity2-L', -1, 'badge2')">-</button>
+                                                    <input type="number" id="quantity2-L" value="0" min="0" max="991">
+                                                    <button onclick="updateQuantity('quantity2-L', 1, 'badge2')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>XL</td>
+                                            <td>63.00元</td>
+                                            <td>994</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity2-XL', -1, 'badge2')">-</button>
+                                                    <input type="number" id="quantity2-XL" value="0" min="0" max="994">
+                                                    <button onclick="updateQuantity('quantity2-XL', 1, 'badge2')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>XXL</td>
+                                            <td>63.00元</td>
+                                            <td>991</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity2-XXL', -1, 'badge2')">-</button>
+                                                    <input type="number" id="quantity2-XXL" value="0" min="0" max="991">
+                                                    <button onclick="updateQuantity('quantity2-XXL', 1, 'badge2')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                
+                                <div id="table3" class="size-table" style="display:none;">
+                                    <table>
+                                        <tr>
+                                            <th>Size</th>
+                                            <th>Price</th>
+                                            <th>Available Quantity</th>
+                                            <th>Requested Quantity</th>
+                                        </tr>
+                                        <tr>
+                                            <td>S</td>
+                                            <td>63.00元</td>
+                                            <td>995</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity3-S', -1, 'badge3')">-</button>
+                                                    <input type="number" id="quantity3-S" value="0" min="0" max="995">
+                                                    <button onclick="updateQuantity('quantity3-S', 1, 'badge3')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>M</td>
+                                            <td>63.00元</td>
+                                            <td>988</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity3-M', -1, 'badge3')">-</button>
+                                                    <input type="number" id="quantity3-M" value="0" min="0" max="988">
+                                                    <button onclick="updateQuantity('quantity3-M', 1, 'badge3')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>L</td>
+                                            <td>63.00元</td>
+                                            <td>991</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity3-L', -1, 'badge3')">-</button>
+                                                    <input type="number" id="quantity3-L" value="0" min="0" max="991">
+                                                    <button onclick="updateQuantity('quantity3-L', 1, 'badge3')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>XL</td>
+                                            <td>63.00元</td>
+                                            <td>994</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity3-XL', -1, 'badge3')">-</button>
+                                                    <input type="number" id="quantity3-XL" value="0" min="0" max="994">
+                                                    <button onclick="updateQuantity('quantity3-XL', 1, 'badge3')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>XXL</td>
+                                            <td>63.00元</td>
+                                            <td>991</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button onclick="updateQuantity('quantity3-XXL', -1, 'badge3')">-</button>
+                                                    <input type="number" id="quantity3-XXL" value="0" min="0" max="991">
+                                                    <button onclick="updateQuantity('quantity3-XXL', 1, 'badge3')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                
+
+                                <div id="table4" class="size-table"
+                                    style="display:none;">
+                                    <table>
+                                        <tr>
+
+                                            <th>Size</th>
+                                            <th>Price</th>
+                                            <th> Available Quantity</th>
+                                            <th> Requested Quantity</th>
+                                        </tr>
+                                        <tr>
+
+                                            <td>S</td>
+                                            <td>63.00元</td>
+                                            <td>995</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button
+                                                        onclick="updateQuantity('quantity4-S', -1, 'badge4')">-</button>
+                                                    <input type="number"
+                                                        id="quantity4-S"
+                                                        value="0" min="0"
+                                                        max="995">
+                                                    <button
+                                                        onclick="updateQuantity('quantity4-S', 1, 'badge4')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>M</td>
+                                            <td>63.00元</td>
+                                            <td>988</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button
+                                                        onclick="updateQuantity('quantity4-M', -1, 'badge4')">-</button>
+                                                    <input type="number"
+                                                        id="quantity4-M"
+                                                        value="0" min="0"
+                                                        max="988">
+                                                    <button
+                                                        onclick="updateQuantity('quantity4-M', 1, 'badge4')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>L</td>
+                                            <td>63.00元</td>
+                                            <td>991</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button
+                                                        onclick="updateQuantity('quantity4-L', -1, 'badge4')">-</button>
+                                                    <input type="number"
+                                                        id="quantity4-L"
+                                                        value="0" min="0"
+                                                        max="991">
+                                                    <button
+                                                        onclick="updateQuantity('quantity4-L', 1, 'badge4')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>XL</td>
+                                            <td>63.00元</td>
+                                            <td>994</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button
+                                                        onclick="updateQuantity('quantity4-XL', -1, 'badge4')">-</button>
+                                                    <input type="number"
+                                                        id="quantity4-XL"
+                                                        value="0" min="0"
+                                                        max="994">
+                                                    <button
+                                                        onclick="updateQuantity('quantity4-XL', 1, 'badge4')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>XXL</td>
+                                            <td>63.00元</td>
+                                            <td>991</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button
+                                                        onclick="updateQuantity('quantity4-XXL', -1, 'badge4')">-</button>
+                                                    <input type="number"
+                                                        id="quantity4-XXL"
+                                                        value="0" min="0"
+                                                        max="991">
+                                                    <button
+                                                        onclick="updateQuantity('quantity4-XXL', 1, 'badge4')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div id="table5" class="size-table"
+                                    style="display:none;">
+                                    <table>
+                                        <tr>
+
+                                            <th>size</th>
+                                            <th>price</th>
+                                            <th>Available Quantity </th>
+                                            <th> Requested Quantity</th>
+                                        </tr>
+                                        <tr>
+
+                                            <td>S</td>
+                                            <td>63.00元</td>
+                                            <td>995</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button
+                                                        onclick="updateQuantity('quantity5-S', -1, 'badge5')">-</button>
+                                                    <input type="number"
+                                                        id="quantity5-S"
+                                                        value="0" min="0"
+                                                        max="995">
+                                                    <button
+                                                        onclick="updateQuantity('quantity5-S', 1, 'badge5')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>M</td>
+                                            <td>63.00元</td>
+                                            <td>988</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button
+                                                        onclick="updateQuantity('quantity5-M', -1, 'badge5')">-</button>
+                                                    <input type="number"
+                                                        id="quantity5-M"
+                                                        value="0" min="0"
+                                                        max="988">
+                                                    <button
+                                                        onclick="updateQuantity('quantity5-M', 1, 'badge5')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>L</td>
+                                            <td>63.00元</td>
+                                            <td>991</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button
+                                                        onclick="updateQuantity('quantity5-L', -1, 'badge5')">-</button>
+                                                    <input type="number"
+                                                        id="quantity5-L"
+                                                        value="0" min="0"
+                                                        max="991">
+                                                    <button
+                                                        onclick="updateQuantity('quantity5-L', 1, 'badge5')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>XL</td>
+                                            <td>63.00元</td>
+                                            <td>994</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button
+                                                        onclick="updateQuantity('quantity5-XL', -1, 'badge5')">-</button>
+                                                    <input type="number"
+                                                        id="quantity5-XL"
+                                                        value="0" min="0"
+                                                        max="994">
+                                                    <button
+                                                        onclick="updateQuantity('quantity5-XL', 1, 'badge5')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>XXL</td>
+                                            <td>63.00元</td>
+                                            <td>991</td>
+                                            <td>
+                                                <div class="quantity-control">
+                                                    <button
+                                                        onclick="updateQuantity('quantity5-XXL', -1, 'badge5')">-</button>
+                                                    <input type="number"
+                                                        id="quantity5-XXL"
+                                                        value="0" min="0"
+                                                        max="991">
+                                                    <button
+                                                        onclick="updateQuantity('quantity5-XXL', 1, 'badge5')">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <!-- إجمالي السعر -->
+                                <div class="total-price">
+                                    إجمالي السعر: <span
+                                        id="totalPrice">0.00</span>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    </table>
+
+                    <div class="actions">
+                        <button id="buy-now">Buy now </button>
+                        <button id="add-to-cart" class="addToCart">add to cart
+                            </button>
+                    </div>
+                </div>
+
+                <div class="gallery-info">
+                    <div class="gallery">
+                        <div id="mainMedia" class="main-image" style="background-color: #ccc;"></div>
+                
+                        <div class="thumbnails" id="thumbnails">
+                            <!-- Video as the first thumbnail -->
+                            <video 
+                                src="../asset/eachProduct/intro.mp4" 
+                                alt="Video Thumbnail" 
+                                class="thumbnail active" 
+                                controls 
+                                muted 
+                                loop>
+                            </video>
+                
+                            <img
+                                src="https://images.unsplash.com/photo-1736754075245-2d2a75639fea?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8"
+                                alt="Thumbnail 2" class="thumbnail">
+                            <img
+                                src="https://images.unsplash.com/photo-1711560707076-d50fbf8a3a26?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8"
+                                alt="Thumbnail 3" class="thumbnail">
+                            <img
+                                src="https://images.unsplash.com/photo-1736580602219-03866c53ec2d?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Thumbnail 4" class="thumbnail">
+                            <img
+                                src="https://images.unsplash.com/photo-1736754075245-2d2a75639fea?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8"
+                                alt="Thumbnail 2" class="thumbnail">
+                            <img
+                                src="https://images.unsplash.com/photo-1711560707076-d50fbf8a3a26?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8"
+                                alt="Thumbnail 3" class="thumbnail">
+                            <img
+                                src="https://images.unsplash.com/photo-1736580602219-03866c53ec2d?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Thumbnail 4" class="thumbnail">
+
+                            <img
+                                src="https://plus.unsplash.com/premium_photo-1736782400256-78c23f2d3a68?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw5fHx8ZW58MHx8fHx8"
+                                alt="Thumbnail 5" class="thumbnail">
+                            <img
+                                src="https://plus.unsplash.com/premium_photo-1730828573938-003e14f210f4?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8"
+                                alt="Thumbnail 1" class="thumbnail ">
+                            <img
+                                src="https://images.unsplash.com/photo-1736754075245-2d2a75639fea?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8"
+                                alt="Thumbnail 2" class="thumbnail">
+                            <img
+                                src="https://images.unsplash.com/photo-1711560707076-d50fbf8a3a26?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8"
+                                alt="Thumbnail 3" class="thumbnail">
+                            <img
+                                src="https://images.unsplash.com/photo-1736580602219-03866c53ec2d?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Thumbnail 4" class="thumbnail">
+                            <img
+                                src="https://plus.unsplash.com/premium_photo-1736782400256-78c23f2d3a68?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw5fHx8ZW58MHx8fHx8"
+                                alt="Thumbnail 5" class="thumbnail">
+
+                        </div>
+                        <div class="controls">
+                            <button id="next">Next &#9654;</button>
+                            <button id="prev">&#9664; Previous</button>
+                        </div>
+
+                    </img>
+                </div>
+
+            </section>
+
+            <section class="OtherProduct">
+                <div class="recomendition">
+                    <h3> Other Product</h3>
+
+                    <button class="scroll-button scroll-right"
+                        onclick="scrollNav('right')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22"
+                            height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-right">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                    </button>
+                    <nav class="rec-product">
+
+                        <a href class="product-card">
+                            <img
+                                src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                alt="Product 1" class="img-fluid">
+                            <h5>
+                                قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                2024 بدون أكمام م
+                            </h5>
+                            <div class="d-flex justify-content-between">
+                                <p>منتج 1</p>
+                                <span class="price">¥29</span>
+                            </div>
+                        </a>
+                        <a href class="product-card">
+                            <img
+                                src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                alt="Product 1" class="img-fluid">
+                            <h5>
+                                قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                2024 بدون أكمام م
+                            </h5>
+                            <div class="d-flex justify-content-between">
+                                <p>منتج 1</p>
+                                <span class="price">¥29</span>
+                            </div>
+                        </a>
+                        <a href class="product-card">
+                            <img
+                                src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                alt="Product 1" class="img-fluid">
+                            <h5>
+                                قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                2024 بدون أكمام م
+                            </h5>
+                            <div class="d-flex justify-content-between">
+                                <p>منتج 1</p>
+                                <span class="price">¥29</span>
+                            </div>
+                        </a>
+                        <a href class="product-card">
+                            <img
+                                src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                alt="Product 1" class="img-fluid">
+                            <h5>
+                                قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                2024 بدون أكمام م
+                            </h5>
+                            <div class="d-flex justify-content-between">
+                                <p>منتج 1</p>
+                                <span class="price">¥29</span>
+                            </div>
+                        </a>
+                        <a href class="product-card">
+                            <img
+                                src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                alt="Product 1" class="img-fluid">
+                            <h5>
+                                قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                2024 بدون أكمام م
+                            </h5>
+                            <div class="d-flex justify-content-between">
+                                <p>منتج 1</p>
+                                <span class="price">¥29</span>
+                            </div>
+                        </a>
+                        <a href class="product-card">
+                            <img
+                                src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                alt="Product 1" class="img-fluid">
+                            <h5>
+                                قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                2024 بدون أكمام م
+                            </h5>
+                            <div class="d-flex justify-content-between">
+                                <p>منتج 1</p>
+                                <span class="price">¥29</span>
+                            </div>
+                        </a>
+                        <a href class="product-card">
+                            <img
+                                src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                alt="Product 1" class="img-fluid">
+                            <h5>
+                                قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                2024 بدون أكمام م
+                            </h5>
+                            <div class="d-flex justify-content-between">
+                                <p>منتج 1</p>
+                                <span class="price">¥29</span>
+                            </div>
+                        </a>
+                        <a href class="product-card">
+                            <img
+                                src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                alt="Product 1" class="img-fluid">
+                            <h5>
+                                قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                2024 بدون أكمام م
+                            </h5>
+                            <div class="d-flex justify-content-between">
+                                <p>منتج 1</p>
+                                <span class="price">¥29</span>
+                            </div>
+                        </a>
+                        <a href class="product-card">
+                            <img
+                                src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                alt="Product 1" class="img-fluid">
+                            <h5>
+                                قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                2024 بدون أكمام م
+                            </h5>
+                            <div class="d-flex justify-content-between">
+                                <p>منتج 1</p>
+                                <span class="price">¥29</span>
+                            </div>
+                        </a>
+                        <a href class="product-card">
+                            <img
+                                src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                alt="Product 1" class="img-fluid">
+                            <h5>
+                                قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                2024 بدون أكمام م
+                            </h5>
+                            <div class="d-flex justify-content-between">
+                                <p>منتج 1</p>
+                                <span class="price">¥29</span>
+                            </div>
+                        </a>
+                        <a href class="product-card">
+                            <img
+                                src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                alt="Product 1" class="img-fluid">
+                            <h5>
+                                قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                2024 بدون أكمام م
+                            </h5>
+                            <div class="d-flex justify-content-between">
+                                <p>منتج 1</p>
+                                <span class="price">¥29</span>
+                            </div>
+                        </a>
+                        <a href class="product-card">
+                            <img
+                                src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                alt="Product 1" class="img-fluid">
+                            <h5>
+                                قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                2024 بدون أكمام م
+                            </h5>
+                            <div class="d-flex justify-content-between">
+                                <p>منتج 1</p>
+                                <span class="price">¥29</span>
+                            </div>
+                        </a>
+
+                    </nav>
+                    <button class="scroll-button scroll-left"
+                        onclick="scrollNav('left')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22"
+                            height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-left">
+                            <path d="m15 18-6-6 6-6" />
+                        </svg>
+                    </button>
+
+                </div>
+
+                <div class="productDetails">
+                   
+                        <!-- Sidebar -->
+                        <div class="sidebar">
+                            <div class="vendor-logo"></div>
+                            <div class="vendor-info">
+                                <div>Name: 布衣大师</div>
+                                <div>Shop name: 视觉市三木森电...</div>
+                                <div>Delivery score: 4.0</div>
+                                <div>Item score: 2.0</div>
+                                <div>Service score: 4.0</div>
+                                <div>Rating: 4</div>
+                                <div>Years on market: 4</div>
+                            </div>
+                            <button class="all-items-btn">All items of this seller</button>
+                            <div class="other-items">
+                                <h4>OTHER ITEMS</h4>
+                                <a href class="product-card">
+                                    <img
+                                        src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                        alt="Product 1" class="img-fluid">
+                                    <h5>
+                                        قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                        2024 بدون أكمام م
+                                    </h5>
+                                    <div class="d-flex justify-content-between">
+                                        <p>منتج 1</p>
+                                        <span class="price">¥29</span>
+                                    </div>
+                                </a>
+                                <a href class="product-card">
+                                    <img
+                                        src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                        alt="Product 1" class="img-fluid">
+                                    <h5>
+                                        قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                        2024 بدون أكمام م
+                                    </h5>
+                                    <div class="d-flex justify-content-between">
+                                        <p>منتج 1</p>
+                                        <span class="price">¥29</span>
+                                    </div>
+                                </a> 
+                                <a href class="product-card">
+                                    <img
+                                        src="https://cbu01.alicdn.com/img/ibank/O1CN01oB6Xtb1zFKFJJjUie_!!2206689786684-0-cib.jpg"
+                                        alt="Product 1" class="img-fluid">
+                                    <h5>
+                                        قميص قصير نسائي جديد عبر الحدود من أمازون لعام
+                                        2024 بدون أكمام م
+                                    </h5>
+                                    <div class="d-flex justify-content-between">
+                                        <p>منتج 1</p>
+                                        <span class="price">¥29</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                
+                        <!-- Main Content -->
+                        <div class="main-content">
+                            <div class="tabs">
+                                <div class="tab active" data-tab="description">Description</div>
+                                <div class="tab" data-tab="properties">Properties</div>
+                                <div class="tab" data-tab="reviews">Reviews</div>
+                            </div>
+                
+                            <!-- Description Tab -->
+                            <div class="tab-content active" id="description">
+                                
+                                <div class="product-images">
+                                    <div class="product-image"></div>
+                                    <div class="product-image"></div>
+                                    <div class="product-image"></div>
+                                    <div class="product-image"></div>
+                                    <div class="product-image"></div>
+                                    <div class="product-image"></div>
+                                    <div class="product-image"></div>
+                                </div>
+                            </div>
+                
+                            <!-- Properties Tab -->
+                            <div class="tab-content" id="properties">
+                                <table class="properties-table">
+                                    <tr>
+                                        <td>Supply category:</td>
+                                        <td>In stock</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Universal material:</td>
+                                        <td>High elasticity</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Goods number:</td>
+                                        <td>Xiaoshu Bar Integrated Emo E03</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Brand:</td>
+                                        <td>Other</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shape:</td>
+                                        <td>Scarf</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Version:</td>
+                                        <td>Loose</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Collar:</td>
+                                        <td>High collar/pile collar</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sleeve Length:</td>
+                                        <td>Long sleeve</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Thickness:</td>
+                                        <td>Ordinary</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Style:</td>
+                                        <td>For leisure</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Design details:</td>
+                                        <td>Printing</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Amoycut category:</td>
+                                        <td>18-40 years</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Whether to invent:</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Inventory:</td>
+                                        <td>Full order</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Suitable crowd:</td>
+                                        <td>Teenager</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fabric name:</td>
+                                        <td>Cotton blend</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Main fabric component:</td>
+                                        <td>Acrylic</td>
+                                    </tr>
+                                    <tr>
+                                        <td>The content of the main fabric composition:</td>
+                                        <td>30</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Applicable scene:</td>
+                                        <td>For leisure</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Appropriate season:</td>
+                                        <td>Winter</td>
+                                    </tr>
+                                    <tr>
+                                        <td>For people:</td>
+                                        <td>Teenager</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Color:</td>
+                                        <td>Black, White, Burgundy, Camel, Apricot, Off white, Light grey, Caramel colour</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Size:</td>
+                                        <td>M, L, XL, 2XL, 3XL, 4XL</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Craft:</td>
+                                        <td>Exempt treatment</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Main downstream platform:</td>
+                                        <td>ebay, Amazon, wish, Aliexpress, Independent station, LAZADA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Main sales area:</td>
+                                        <td>Africa, Europe, South America, Southeast Asia, North America, North-east Asia, Middle East</td>
+                                    </tr>
+                                    <tr>
+                                        <td>There is an authorized self-owned brand:</td>
+                                        <td>No</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Whether the supply of cross-border exports:</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                </table>
+                            </div>
+                
+                            <!-- Reviews Tab -->
+                            <div class="tab-content" id="reviews">
+                                <div class="reviews-container">
+                                    <!-- Reviews content -->
+                                    <p>No reviews yet.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+        </main>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../js/eachProduct.js"></script>
+    </body>
+</html>
