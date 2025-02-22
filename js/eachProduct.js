@@ -71,56 +71,69 @@ updateMainMedia(currentIndex);
 
 // =======================================================
 // for countty the size 
-function showSizeTable(tableId) {
-    // إخفاء جميع الجداول
-    var tables = document.getElementsByClassName('size-table');
-    for (var i = 0; i < tables.length; i++) {
-        tables[i].style.display = 'none';
+let selectedColor = null; // المتغير الذي يخزن اللون المختار
+
+// اختيار اللون
+function selectColor(color) {
+    const cards = document.getElementsByClassName("cards");
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].classList.remove("active");
     }
 
-    // إظهار الجدول المحدد
-    document.getElementById(tableId).style.display = 'block';
-
-    // إزالة النشاط من جميع الكروت
-    var cards = document.getElementsByClassName('cards');
-    for (var i = 0; i < cards.length; i++) {
-        cards[i].classList.remove('active');
-    }
-
-    // إضافة النشاط إلى الكرد المحدد
-    event.currentTarget.classList.add('active');
-}
-
-function updateQuantity(inputId, change, badgeId) {
-    var input = document.getElementById(inputId);
-    var newValue = parseInt(input.value) + change;
-    if (newValue >= 0 && newValue <= parseInt(input.max)) {
-        input.value = newValue;
-        updateTotalQuantity(badgeId); // تحديث المجموع الكلي
-        updateTotalPrice(); // تحديث إجمالي السعر
+    const selectedCard = Array.from(cards).find((card) => card.querySelector("p").textContent === color);
+    if (selectedCard) {
+        selectedCard.classList.add("active");
+        selectedColor = color;
     }
 }
 
-function updateTotalQuantity(badgeId) {
-    var badge = document.getElementById(badgeId);
-    var inputs = document.querySelectorAll('input[id^="' + badgeId.replace('badge', 'quantity') + '"]');
-    var total = 0;
-    inputs.forEach(function(input) {
-        total += parseInt(input.value);
-    });
-    badge.textContent = total; // تحديث الرقم فوق الصورة
+// تحديث الكميات
+function updateQuantity(size, change) {
+    if (!selectedColor) return; // إذا لم يكن هناك لون مختار، لا نفعل شيئًا
+
+    const quantityElement = document.getElementById(`quantity_${size}`);
+    let currentQuantity = parseInt(quantityElement.textContent) || 0;
+    const newQuantity = Math.max(0, currentQuantity + change);
+
+    // تحديث الكميات في الجدول
+    quantityElement.textContent = newQuantity;
+
+    // تحديث الرقم فوق الصورة
+    const badgeId = `badge_${selectedColor}`;
+    const badge = document.getElementById(badgeId);
+    let badgeValue = parseInt(badge.textContent) || 0;
+    badge.textContent = Math.max(0, badgeValue + change);
+
+    // تحديث السعر الإجمالي
+    updateTotalPrice();
 }
 
+// تحديث السعر الإجمالي
 function updateTotalPrice() {
-    var totalPrice = 0;
-    var inputs = document.querySelectorAll('input[type="number"]');
-    inputs.forEach(function(input) {
-        var quantity = parseInt(input.value);
-        var price = 63.00; // سعر القطعة الواحدة
-        totalPrice += quantity * price;
+    let totalPrice = 0;
+    const pricePerItem = 63.0; // سعر القطعة الواحدة
+
+    // الحصول على جميع الأحجام من HTML
+    const sizes = document.querySelectorAll(".size-table tbody tr");
+    sizes.forEach((row) => {
+        const size = row.cells[0].textContent.trim(); // اسم الحجم
+        const quantity = parseInt(document.getElementById(`quantity_${size}`).textContent) || 0;
+        totalPrice += quantity * pricePerItem;
     });
-    document.getElementById('totalPrice').textContent = totalPrice.toFixed(2); // عرض الإجمالي
+
+    document.getElementById("totalPrice").textContent = totalPrice.toFixed(2); // عرض الإجمالي
 }
+
+// تحديد أول لون تلقائيًا عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.getElementsByClassName("cards");
+    if (cards.length > 0) {
+        const firstCard = cards[0];
+        const firstColor = firstCard.querySelector("p").textContent;
+        selectColor(firstColor); // اختيار أول لون تلقائيًا
+    }
+});
+
 // ==========================
 // recomdation of the prodcut of slider
 function scrollNav(direction) {
@@ -165,5 +178,103 @@ tabs.forEach(tab => {
         tab.classList.add('active');
         const tabId = tab.getAttribute('data-tab');
         document.getElementById(tabId).classList.add('active');
+    });
+});
+
+
+// ==============================================================
+// swiper
+
+const swiper = new Swiper('.swiper-container', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+        delay: 2000, // تأخير بين كل انتقال (3 ثوانٍ)
+        disableOnInteraction: false, // استمر في التشغيل التلقائي حتى عند التفاعل
+    },
+    loop: true, // تشغيل اللوب حتى لا يتوقف عند آخر سلايد
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+        },
+        640: {
+            slidesPerView: 2,
+        },
+        768: {
+            slidesPerView: 3,
+        },
+        1024: {
+            slidesPerView: 4,
+        },
+        1200: {
+            slidesPerView: 5,
+        },
+    },
+});
+
+
+// ===================================================
+//  add cart to fav 
+document.addEventListener('DOMContentLoaded', function () {
+    const wishlistCount = document.querySelector('.wishlist-count');
+    const cartCount = document.querySelector('.cart-count');
+
+    // تحميل العدد المحفوظ من localStorage أو البدء من 0 إذا لم يكن موجودًا
+    let wishlistCounter = parseInt(localStorage.getItem('wishlistCount')) || 0;
+    let cartCounter = parseInt(localStorage.getItem('cartCount')) || 0;
+    wishlistCount.textContent = wishlistCounter;
+    cartCount.textContent = cartCounter;
+
+    // تحميل حالة كل زر قلب وزر سلة من localStorage
+    document.querySelectorAll('.heart-button, .cart-button').forEach((button, index) => {
+        const isClicked = localStorage.getItem(`${button.classList.contains('heart-button') ? 'heartButton' : 'cartButton'}${index}`) === 'true';
+
+        if (isClicked) {
+            button.classList.add('active'); // تطبيق اللون إذا تم النقر من قبل
+            button.setAttribute('data-clicked', 'true');
+        }
+
+        // إضافة حدث النقر على زر القلب أو زر السلة
+        button.addEventListener('click', function () {
+            const isClicked = button.getAttribute('data-clicked') === 'true';
+            const isHeartButton = button.classList.contains('heart-button');
+
+            if (!isClicked) {
+                // إذا لم يتم النقر من قبل
+                button.setAttribute('data-clicked', 'true');
+                button.classList.add('active'); // تغيير اللون
+                if (isHeartButton) {
+                    wishlistCounter++; // زيادة العدد في القائمة المفضلة
+                } else {
+                    cartCounter++; // زيادة العدد في السلة
+                }
+            } else {
+                // إذا تم النقر من قبل
+                button.setAttribute('data-clicked', 'false');
+                button.classList.remove('active'); // إعادة اللون إلى الطبيعي
+                if (isHeartButton) {
+                    wishlistCounter--; // تقليل العدد في القائمة المفضلة
+                } else {
+                    cartCounter--; // تقليل العدد في السلة
+                }
+            }
+
+            // تحديث العدد في الناف بار
+            wishlistCount.textContent = wishlistCounter;
+            cartCount.textContent = cartCounter;
+
+            // حفظ العدد وحالة الزر في localStorage
+            localStorage.setItem('wishlistCount', wishlistCounter);
+            localStorage.setItem('cartCount', cartCounter);
+            localStorage.setItem(`${isHeartButton ? 'heartButton' : 'cartButton'}${index}`, button.getAttribute('data-clicked'));
+        });
     });
 });

@@ -107,7 +107,7 @@ li{
             background-color: var(--background-input);
         }
 
-
+/* section of details of the product  */
 
 .product-page {
     margin: 20px auto;
@@ -139,12 +139,20 @@ li{
             th{
                 color: #949494;
                 padding: 5px;
+                min-width: 120px;
 
+            }
+            /* 400px */
+            @media (max-width:400px) {
+                th{
+                min-width: 80px!important;
+                } 
             }
             td{
                 padding: 10px;
                 border: none!important;
                 font-size: 16px;
+                width: 100%!important;
                 .price{
                     font-size: 18px;
                     color: var(--background-input);
@@ -252,7 +260,7 @@ li{
 
 .actions {
     margin-top: 20px;
-
+    display: flex;
     button {
       padding: 10px 50px;
       margin-right: 10px;
@@ -284,6 +292,52 @@ li{
   
 
   }
+  .info-product tr{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .size-table tr{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+  }
+  .size-table tr td{
+    text-align: start!important;
+  }
+  .size-table tr td:nth-child(2) {
+    text-align: end !important;
+}
+/* تنسيق أزرار الزيادة والنقصان */
+.quantity-btn {
+    background-color: var(--background-input);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.quantity-btn:hover {
+    background-color: var(--background-hover);
+}
+
+.quantity-value {
+    display: inline-block;
+    font-size: 16px;
+}
+
+/* تنسيق الإجمالي */
+.total-price-container {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
 /* ======================================= */
   /* OtherProduct */
   .OtherProduct{
@@ -562,7 +616,165 @@ li{
             background: #ddd;
             border-radius: 8px;
         }
+      .other-item{
+           display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f4f4f4;
+  
+      }
+      .other-item a{
+        width: 270px;
+      }
+/* swiper  */
+main .swiper-container {
+    overflow: hidden;
+    position: relative;
+    
+    height: 400px; 
+    margin: 45px auto; 
+}
+main .swiper-container .swiper-wrapper {
 
+    height: auto;
+}
+main .swiper-container h2 span{
+    font-weight: 700;
+}
+/* Style for the individual swiper slides */
+main .swiper-container .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Style for the card inside each swiper slide */
+main .swiper-container .card {
+    width: 100%;
+    max-width: 250px;
+    /*يمكنكتغييرالعرضحسباحتياجاتك*/background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+    height: 340px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -webkit-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -moz-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -ms-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -o-transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for the card */
+main .swiper-container .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling the image inside the card */
+main .swiper-container .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Styling the card's title */
+main .swiper-container .card h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Styling the sale price in the card */
+main .swiper-container .card p {
+    font-size: 1rem;
+    color: #007bff;
+    margin-top: 10px;
+}
+
+/* Pagination buttons */
+main .swiper-container .swiper-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+/* Style for pagination dots */
+main .swiper-container .swiper-pagination-bullet {
+    background-color: #007bff;
+    opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #0056b3;
+}
+
+/* Navigation buttons */
+main .swiper-container .swiper-button-next, main .swiper-container .swiper-button-prev {
+    color: #007bff;
+    /* background-color: rgba(255, 255, 255, 0.6); */
+    padding: 10px;
+    border-radius: 50%;
+}
+
+main .swiper-container .swiper-button-next:hover, main .swiper-container .swiper-button-prev:hover {
+    /* background-color: rgba(255, 255, 255, 0.9); */
+    color: #0056b3;
+}
+
+
+ /* add number for count in the cart  */
+ .image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay-buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .overlay-buttons {
+    opacity: 1;
+}
+
+.heart-button, .cart-button {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.heart-button:hover, .cart-button:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+
+.heart-button.active svg {
+    fill: red; /* تغيير لون القلب إلى الأحمر */
+    stroke: red; /* تغيير لون الحدود إلى الأحمر */
+}
+.cart-button.active svg {
+    fill: green; /* تغيير لون السلة إلى الأخضر */
+    stroke: green; /* تغيير لون الحدود إلى الأخضر */
+}
 
 
 
@@ -593,10 +805,20 @@ li{
    }
    @media (max-width: 930px) {
     .product-details,.productDetails,.recomendition {
-
         width: 100%!important;
         gap: 1px;
     }
+    .productDetails{
+        flex-direction: column;
+    }
+     .other-item{
+           display: flex;
+           flex-wrap: wrap;
+           flex-direction: row;
+     }
+     .productDetails .sidebar {
+        width: 100%;
+     }
     .product-page {
         margin: 20px auto;
         padding: 2px;
@@ -630,6 +852,10 @@ li{
 @media (max-width: 505px) {
     
     .filter-sidebar {
-     display: none;}
+     display: none;
+    }
+    .productDetails .tabs {
+     gap: 0px;
+    }
 
    }
