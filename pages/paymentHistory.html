@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #fff;
+            border-right: 1px solid #e0e0e0;
+            padding: 20px 0;
+        }
+
+        .sidebar-item {
+            padding: 10px 25px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .sidebar-item.active {
+            background-color: #fff;
+            color: #333;
+            border-left: 4px solid #ff0000;
+        }
+
+        .sidebar-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .sidebar-header {
+            padding: 10px 25px;
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background-color: #f9f9f9;
+        }
+
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        .main-content h1 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .payment-history {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+        }
+
+        .payment-history h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .account-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .account-number, .balance-info, .payment-info {
+            padding: 10px;
+        }
+
+        .account-number span {
+            font-weight: bold;
+        }
+
+        .deposit-btn {
+            background-color: #ff8c00;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .deposit-btn:hover {
+            background-color: #ff7000;
+        }
+
+        .date-filter {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .date-label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .date-input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .show-btn {
+            background-color: #ff8c00;
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .show-btn:hover {
+            background-color: #ff7000;
+        }
+
+        .transactions-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .transactions-table th {
+            text-align: left;
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            color: #333;
+        }
+
+        .transactions-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+       
+        .positive-amount {
+            color: #00aa00;
+        }
+
+        .negative-amount {
+            color: #ff0000;
+        }
+
+        .profile-section, .orders-section, .support-section, .withdraw-section, .referral-section {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">GENERAL INFORMATION</div>
+        <div class="sidebar-item" data-page="orders">ORDERS</div>
+        <div class="sidebar-item active" data-page="account">ACCOUNT</div>
+        <div class="sidebar-item" data-page="profile">PROFILE</div>
+        <div class="sidebar-item" data-page="support">SUPPORT SERVICE</div>
+        <div class="sidebar-item" data-page="withdraw">WITHDRAW FUNDS</div>
+        <div class="sidebar-item" data-page="referral">REFERRAL SYSTEM</div>
+    </div>
+
+    <div class="main-content">
+        <!-- ACCOUNT PAGE -->
+        <div class="page-content active" id="account-page">
+            <h1>Account</h1>
+
+            <div class="payment-history">
+                <h2>Payment history</h2>
+
+                <div class="account-info">
+                    <div class="account-number">
+                        Account number: <span>1559801</span>
+                    </div>
+                    <div class="balance-info">
+                        On your account: <span id="account-balance">0 $</span>
+                    </div>
+                    <div class="payment-info">
+                        Awaiting payment: <span id="awaiting-payment">5 053 $</span>
+                    </div>
+                    <button class="deposit-btn">DEPOSIT FUNDS</button>
+                </div>
+
+                <div class="date-filter">
+                    <div class="date-label">Date</div>
+                    <input type="text" class="date-input" id="start-date" placeholder="DD.MM.YYYY" value="21.02.2020">
+                    <input type="text" class="date-input" id="end-date" placeholder="DD.MM.YYYY" value="22.03.2020">
+                    <button class="show-btn" id="show-btn">SHOW</button>
+                </div>
+
+                <table class="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Comment</th>
+                            <th class="amount-column">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>22.03.2020</td>
+                            <td>Payment received</td>
+                            <td class="amount-column positive-amount">1200.00 $</td>
+                        </tr>
+                        <tr>
+                            <td>15.03.2020</td>
+                            <td>Withdrawal</td>
+                            <td class="amount-column negative-amount">-350.50 $</td>
+                        </tr>
+                        <tr>
+                            <td>03.03.2020</td>
+                            <td>Payment received</td>
+                            <td class="amount-column positive-amount">856.75 $</td>
+                        </tr>
+                        <tr>
+                            <td>25.02.2020</td>
+                            <td>Payment received</td>
+                            <td class="amount-column positive-amount">1500.00 $</td>
+                        </tr>
+                        <tr>
+                            <td>22.02.2020</td>
+                            <td>Withdrawal</td>
+                            <td class="amount-column negative-amount">-750.25 $</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- PROFILE PAGE -->
+        <div class="page-content" id="profile-page">
+            <h1>Profile</h1>
+            <div class="profile-section">
+                <h2>Personal Information</h2>
+                <div class="profile-form">
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" placeholder="Enter your first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" placeholder="Enter your last name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" placeholder="Enter your country">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" placeholder="Enter your city">
+                    </div>
+                </div>
+                <button class="submit-btn">Save Changes</button>
+            </div>
+        </div>
+
+        <!-- ORDERS PAGE -->
+        <div class="page-content" id="orders-page">
+            <h1>Orders</h1>
+            <div class="orders-section">
+                <h2>Your Orders</h2>
+                <p>You currently have no orders.</p>
+            </div>
+        </div>
+
+        <!-- SUPPORT PAGE -->
+        <div class="page-content" id="support-page">
+            <h1>Support Service</h1>
+            <div class="support-section">
+                <h2>Contact Support</h2>
+                <p>If you need help, please fill out the form below or contact us directly.</p>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" placeholder="Enter subject">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc;" placeholder="Enter your message"></textarea>
+                </div>
+                <button class="submit-btn">Send Message</button>
+            </div>
+        </div>
+
+        <!-- WITHDRAW PAGE -->
+        <div class="page-content" id="withdraw-page">
+            <h1>Withdraw Funds</h1>
+            <div class="withdraw-section">
+                <h2>Withdraw From Your Account</h2>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" placeholder="Enter amount">
+                </div>
+                <div class="form-group">
+                    <label for="payment-method">Payment Method</label>
+                    <select id="payment-method" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
+                        <option value="">Select payment method</option>
+                        <option value="bank">Bank Transfer</option>
+                        <option value="card">Credit Card</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+                </div>
+                <button class="submit-btn">Withdraw Funds</button>
+            </div>
+        </div>
+
+        <!-- REFERRAL PAGE -->
+        <div class="page-content" id="referral-page">
+            <h1>Referral System</h1>
+            <div class="referral-section">
+                <h2>Your Referral Link</h2>
+                <p>Share this link with friends and earn commission on their activities.</p>
+                <div class="form-group">
+                    <input type="text" value="https://example.com/ref/1559801" readonly style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
+                </div>
+                <button class="submit-btn">Copy Link</button>
+                
+                <h3 style="margin-top: 30px;">Referral Statistics</h3>
+                <table class="transactions-table" style="margin-top: 15px;">
+                    <thead>
+                        <tr>
+                            <th>Referral ID</th>
+                            <th>Joined Date</th>
+                            <th class="amount-column">Commission</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>REF-2025</td>
+                            <td>15.01.2020</td>
+                            <td class="amount-column positive-amount">120.00 $</td>
+                        </tr>
+                        <tr>
+                            <td>REF-1872</td>
+                            <td>03.12.2019</td>
+                            <td class="amount-column positive-amount">85.50 $</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation functionality
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+            
+            sidebarItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Get the page to show
+                    const pageId = this.getAttribute('data-page') + '-page';
+                    
+                    // Remove active class from all sidebar items
+                    sidebarItems.forEach(i => i.classList.remove('active'));
+                    
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                    
+                    // Hide all pages
+                    document.querySelectorAll('.page-content').forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // Show the selected page
+                    document.getElementById(pageId).classList.add('active');
+                });
+            });
+            
+            // Show button click handler (for filtering transactions by date)
+            document.getElementById('show-btn').addEventListener('click', function() {
+                // In a real application, this would filter the transactions
+                alert('Transactions filtered by date range');
+            });
+        });
+    </script>
+</body>
+</html>
