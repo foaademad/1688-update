@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Out</title>
+  <link rel="stylesheet" href="../css/checkout.css">
+  <link rel="stylesheet" href="../css/main.css">
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Payment & Transfer</h1>
+            <p>Please select one of the available accounts to complete the payment process</p>
+        </header>
+
+        <div class="accounts-container">
+            <div class="account-card" onclick="selectAccount(this)">
+                <div class="account-title">Al-Amqi Exchange Company Account</div>
+                <div class="account-details">
+                    <div class="account-detail-label">Account Name:</div>
+                    <div>Your Company For Trade and Import</div>
+                </div>
+                <div class="account-details">
+                    <div class="account-detail-label">Account Number:</div>
+                    <div class="account-number">
+                        <span id="acc1">254132645</span>
+                        <button class="copy-btn" onclick="copyToClipboard('acc1', event)">Copy</button>
+                        <span class="copy-success">Copied ✓</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="account-card" onclick="selectAccount(this)">
+                <div class="account-title">Al-Basiri Exchange Company Account</div>
+                <div class="account-details">
+                    <div class="account-detail-label">Account Name:</div>
+                    <div>Your Company For Trade and Import</div>
+                </div>
+                <div class="account-details">
+                    <div class="account-detail-label">Account Number:</div>
+                    <div class="account-number">
+                        <span id="acc2">23251495</span>
+                        <button class="copy-btn" onclick="copyToClipboard('acc2', event)">Copy</button>
+                        <span class="copy-success">Copied ✓</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="account-card" onclick="selectAccount(this)">
+                <div class="account-title">Bin Dawal Exchange Company Account</div>
+                <div class="account-details">
+                    <div class="account-detail-label">Account Name:</div>
+                    <div>Your Company For Trade and Import</div>
+                </div>
+                <div class="account-details">
+                    <div class="account-detail-label">Account Number:</div>
+                    <div class="account-number">
+                        <span id="acc3">2322662</span>
+                        <button class="copy-btn" onclick="copyToClipboard('acc3', event)">Copy</button>
+                        <span class="copy-success">Copied ✓</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="account-card" onclick="selectAccount(this)">
+                <div class="account-title">Al-Tadamon Bank Account</div>
+                <div class="account-details">
+                    <div class="account-detail-label">Account Name:</div>
+                    <div>Your Company For Trade and Import</div>
+                </div>
+                <div class="account-details">
+                    <div class="account-detail-label">Account Number:</div>
+                    <div class="account-number">
+                        <span id="acc4">00114385</span>
+                        <button class="copy-btn" onclick="copyToClipboard('acc4', event)">Copy</button>
+                        <span class="copy-success">Copied ✓</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="total-section">
+            <div class="total-amount">Total Amount:</div>
+            <div class="total-value">$<span id="totalAmount">1,250.00</span></div>
+        </div>
+
+        <div class="form-section">
+            <h2 class="form-title">Payment Confirmation</h2>
+            <p style="margin-bottom: 20px;">Please upload a transfer receipt image and add any additional notes</p>
+
+            <div class="form-group">
+                <div class="upload-area" id="uploadArea">
+                    <i>📁</i>
+                    <p class="upload-text">Click here to upload an image or drag and drop it here</p>
+                    <input type="file" id="fileInput" accept="image/*" multiple>
+                </div>
+                <div class="preview-container" id="previewContainer"></div>
+            </div>
+
+            <div class="form-group">
+                <textarea placeholder="Add your notes here..."></textarea>
+            </div>
+
+            <button class="submit-btn">Confirm Payment</button>
+        </div>
+
+        <footer>
+            <p>© 2025 Your Company For Trade and Import. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Handle account selection
+        function selectAccount(element) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.account-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked card
+            element.classList.add('selected');
+        }
+
+        // Handle file upload
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const previewContainer = document.getElementById('previewContainer');
+
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#36c7f6';
+            uploadArea.style.backgroundColor = '#d8eff860';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = '#ccc';
+            uploadArea.style.backgroundColor = '';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#ccc';
+            uploadArea.style.backgroundColor = '';
+            
+            if (e.dataTransfer.files.length) {
+                handleFiles(e.dataTransfer.files);
+            }
+        });
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length) {
+                handleFiles(fileInput.files);
+            }
+        });
+
+        function handleFiles(files) {
+            for (const file of files) {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = (e) => {
+                        createImagePreview(e.target.result);
+                    };
+                    
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+
+        function createImagePreview(src) {
+            const previewElement = document.createElement('div');
+            previewElement.className = 'image-preview';
+            
+            const img = document.createElement('img');
+            img.src = src;
+            
+            const deleteBtn = document.createElement('div');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.textContent = '×';
+            deleteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                previewContainer.removeChild(previewElement);
+            });
+            
+            previewElement.appendChild(img);
+            previewElement.appendChild(deleteBtn);
+            previewContainer.appendChild(previewElement);
+        }
+
+        // Copy account number to clipboard
+        function copyToClipboard(elementId, event) {
+            event.stopPropagation();
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                // Show success message
+                const successElement = event.target.nextElementSibling;
+                successElement.style.display = 'inline';
+                
+                // Hide after 2 seconds
+                setTimeout(() => {
+                    successElement.style.display = 'none';
+                }, 2000);
+            });
+        }
+
+        // Initialize with a random total for demonstration
+        document.addEventListener('DOMContentLoaded', () => {
+            const randomTotal = (Math.random() * 2000 + 500).toFixed(2);
+            document.getElementById('totalAmount').textContent = randomTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        });
+    </script>
+</body>
+</html>
