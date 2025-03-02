@@ -5,137 +5,454 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart</title>
   <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/orderHistory.css">
+  <style>
+    
 
- 
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .logo img {
+      width: 24px;
+      height: 24px;
+      margin-right: 5px;
+    }
+
+    .badge {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: var(--background-input);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+      margin-left: 5px;
+    }
+
+    .action-bar {
+      display: flex;
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin-right: 15px;
+    }
+
+    .checkbox-container input {
+      margin-right: 5px;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .btn-orange {
+      background-color: var(--background-input);
+
+      color: white;
+    }
+
+    .btn-outline {
+      background-color: white;
+      border: 1px solid #ddd;
+    }
+
+    .btn i {
+      margin-right: 5px;
+    }
+
+    .cart-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .cart-container {
+        flex-direction: row;
+      }
+    }
+
+    .cart-items {
+      flex: 1;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 15px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .empty-row {
+      height: 60px;
+      background-color: #f9f9f9;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .cart-item {
+      display: flex;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    @media (max-width: 768px) {
+      .cart-item {
+        flex-direction: column;
+      }
+    }
+
+    .item-checkbox {
+      margin-right: 15px;
+      align-self: flex-start;
+    }
+
+    .item-image {
+      width: 100px;
+      height: 100px;
+      margin-right: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .item-image {
+        margin-bottom: 15px;
+      }
+    }
+
+    .item-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item-title {
+      font-size: 14px;
+      margin-bottom: 10px;
+      font-weight: normal;
+      line-height: 1.4;
+    }
+
+    .item-details {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .item-details {
+        flex-direction: column;
+      }
+    }
+
+    .details-column {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    @media (max-width: 768px) {
+      .details-column {
+        min-width: 100%;
+        margin-bottom: 15px;
+      }
+    }
+
+    .property-row {
+      display: flex;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .property-label {
+      width: 110px;
+      font-size: 13px;
+      color: #666;
+      text-align: right;
+      padding-right: 10px;
+    }
+
+    .property-value {
+      font-size: 13px;
+      flex: 1;
+    }
+
+    .link {
+      color: #1890ff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+    }
+
+    .quantity-btn {
+      width: 24px;
+      height: 24px;
+      background-color: #f5f5f5;
+      border: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .quantity-input {
+      width: 40px;
+      height: 24px;
+      border: 1px solid #ddd;
+      text-align: center;
+      margin: 0 5px;
+    }
+
+    .price {
+      font-size: 16px;
+      font-weight: bold;
+      color:  var(--background-input);
+    }
+
+    .total-price {
+      text-align: right;
+      margin-top: 5px;
+    }
+
+    .comments-section {
+      display: flex;
+      margin-top: 15px;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .comments-label {
+      font-size: 13px;
+      color: #666;
+      padding-right: 10px;
+    }
+
+    .comments-container {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .comments-textarea {
+      flex: 1;
+      height: 60px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 8px;
+      resize: none;
+    }
+
+    .heart-icon {
+      color: #ddd;
+      cursor: pointer;
+      margin-left: 10px;
+      font-size: 22px;
+    }
+
+    .heart-icon:hover {
+      color: var( --background-hover);
+    }
+
+    .order-summary {
+      width: 100%;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 15px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (min-width: 768px) {
+      .order-summary {
+        width: 300px;
+      }
+    }
+
+    .summary-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--background-input);
+      
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .arrow {
+      position: absolute;
+      right: 45%;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 40px solid  var(--background-input);
+      transform: rotate(180deg);
+    }
+
+   
+  </style>
 </head>
 <body>
-  <div class="orderHistory">
+  <div class="container">
+    <header>
+      <div class="logo">
+        <span>Taobao</span>
+        <span class="badge">1</span>
+      </div>
+    </header>
+
+    <div class="action-bar">
+      <div class="checkbox-container">
+        <input type="checkbox" id="select-all">
+        <label for="select-all">Choose all items</label>
+      </div>
+      <button class="btn btn-orange">
+        <i class="icon">🗑️</i> Delete selected
+      </button>
+      <button class="btn btn-outline">
+        <i class="icon">♥️</i> Transfer selected to favorites
+      </button>
+      <button class="btn btn-outline">
+        <i class="icon">🛒</i> Empty cart
+      </button>
+    </div>
+
     <div class="cart-container">
       <div class="cart-items">
-        <div class="empty-row"></div>
         <div class="cart-item">
           <input type="checkbox" class="item-checkbox" checked>
-          <img src="https://cbu01.alicdn.com/img/ibank/8755999013_574435680.600x600.jpg" alt="Red sportswear" class="item-image">
-          <div class="item-details">
-            <div class="item-info">
-              <h3 class="item-title">Round neck casual sports suit female spring and autumn 2020 new tide brand loose jump suit women's sweater</h3>
-              <div class="item-properties">
-                <div class="property">
+          <img src="https://cbu01.alicdn.com/img/ibank/8755942928_574435680.jpg" alt="Red sportswear" class="item-image">
+          <h3 class="item-title">Round neck casual sports suit female spring and autumn 2020 new tide brand loose jump suit women's sweater</h3>
+          <div class="item-content">
+            
+            <div class="item-details">
+              <div class="details-column">
+                <div class="property-row">
                   <div class="property-label">Code:</div>
                   <div class="property-value">610733782254</div>
                 </div>
-                <div class="property">
+                
+                <div class="property-row">
                   <div class="property-label">Vendor:</div>
                   <div class="property-value">清凉館舖店</div>
                 </div>
-                <div class="property">
+                
+                <div class="property-row">
                   <div class="property-label">Category:</div>
                   <div class="property-value">
                     <a href="#" class="link">Clothes for rest</a>
                   </div>
                 </div>
-                <div class="property">
+                
+                <div class="property-row">
                   <div class="property-label">Size:</div>
                   <div class="property-value">M</div>
                 </div>
-                <div class="property">
+                
+                <div class="property-row">
                   <div class="property-label">Color:</div>
                   <div class="property-value">Scarlet (Two-piece)</div>
                 </div>
-                <div class="property">
+                
+                <div class="property-row">
                   <div class="property-label">Classification:</div>
                   <div class="property-value">
                     <a href="#" class="link">Change configuration</a>
                   </div>
                 </div>
-                <div class="property">
+              </div>
+              
+              <div class="details-column">
+                <div class="property-row">
                   <div class="property-label">Price per 1 piece:</div>
                   <div class="property-value price">28 $</div>
                 </div>
-                <div class="property">
+                
+                <div class="property-row">
                   <div class="property-label">Discount:</div>
                   <div class="property-value">-</div>
                 </div>
+                
+                <div class="property-row">
+                  <div class="property-label">Quantity:</div>
+                  <div class="property-value">
+                    <div class="quantity-control">
+                      <button class="quantity-btn">-</button>
+                      <input type="text" class="quantity-input" value="1">
+                      <button class="quantity-btn">+</button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="property-row">
+                  <!-- <div class="property-label"></div> -->
+                  <div class="property-value price total-price">28 $</div>
+                </div>
               </div>
             </div>
-            <div class="property">
-              <div class="property-label">Quantity:</div>
-              <div class="quantity-control">
-                <button class="quantity-btn">-</button>
-                <input type="text" class="quantity-input" value="1">
-                <button class="quantity-btn">+</button>
-              </div>
-              <div class="price" style="margin-top: 10px;">28 $</div>
+            
+          </div>
+          <div class="comments-section">
+            <div class="comments-label">Comments for the operator:</div>
+            <div class="comments-container">
+              <textarea class="comments-textarea"></textarea>
+              <span class="heart-icon">♡</span>
             </div>
           </div>
-        </div>
-        <div class="cart-item">
-            <input type="checkbox" class="item-checkbox" checked>
-            <img src="https://cbu01.alicdn.com/img/ibank/8755999013_574435680.600x600.jpg" alt="Red sportswear" class="item-image">
-            <div class="item-details">
-              <div class="item-info">
-                <h3 class="item-title">Round neck casual sports suit female spring and autumn 2020 new tide brand loose jump suit women's sweater</h3>
-                <div class="item-properties">
-                  <div class="property">
-                    <div class="property-label">Code:</div>
-                    <div class="property-value">610733782254</div>
-                  </div>
-                  <div class="property">
-                    <div class="property-label">Vendor:</div>
-                    <div class="property-value">清凉館舖店</div>
-                  </div>
-                  <div class="property">
-                    <div class="property-label">Category:</div>
-                    <div class="property-value">
-                      <a href="#" class="link">Clothes for rest</a>
-                    </div>
-                  </div>
-                  <div class="property">
-                    <div class="property-label">Size:</div>
-                    <div class="property-value">M</div>
-                  </div>
-                  <div class="property">
-                    <div class="property-label">Color:</div>
-                    <div class="property-value">Scarlet (Two-piece)</div>
-                  </div>
-                  <div class="property">
-                    <div class="property-label">Classification:</div>
-                    <div class="property-value">
-                      <a href="#" class="link">Change configuration</a>
-                    </div>
-                  </div>
-                  <div class="property">
-                    <div class="property-label">Price per 1 piece:</div>
-                    <div class="property-value price">28 $</div>
-                  </div>
-                  <div class="property">
-                    <div class="property-label">Discount:</div>
-                    <div class="property-value">-</div>
-                  </div>
-                </div>
-              </div>
-              <div class="property">
-                <div class="property-label">Quantity:</div>
-                <div class="quantity-control">
-                  <button class="quantity-btn">-</button>
-                  <input type="text" class="quantity-input" value="1">
-                  <button class="quantity-btn">+</button>
-                </div>
-                <div class="price" style="margin-top: 10px;">28 $</div>
-              </div>
-            </div>
-        </div>
 
-        <div class="comments-section">
-          <div class="comments-label">
-            <span>Comments for the operator:</span>
-            <span class="heart-icon">♡</span>
-          </div>
-          <textarea class="comments-textarea"></textarea>
         </div>
+        
       </div>
-
+      
       <div class="order-summary">
         <div class="summary-title">YOUR ORDER</div>
         <div class="summary-row">
@@ -156,7 +473,7 @@
       </div>
     </div>
 
-    
+   
   </div>
 </body>
 </html>
