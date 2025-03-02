@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/confirmOrder.css">
+
+    <title>Confirm Order</title>
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Confirm Order</h1>
+            <p>Review your order details and take action</p>
+        </header>
+
+        <div class="order-card">
+            <div class="order-header">
+                <div class="order-title">Order #ORD-12345</div>
+                <div class="order-status pending">Pending</div>
+            </div>
+            <div class="order-content">
+                <div class="product-details">
+                    <div class="product-image">
+                        <img src="https://cbu01.alicdn.com/img/ibank/8736750155_574435680.600x600.jpg" alt="Product Image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Premium Wireless Headphones</div>
+                        <div class="product-price">Unit Price: $159.99</div>
+                        <div class="product-quantity">Quantity: 2</div>
+                        <div>SKU: HPH-2023-BLK</div>
+                        <div>Color: Midnight Black</div>
+                    </div>
+                </div>
+
+                <div class="price-details">
+                    <div class="price-row">
+                        <div>Subtotal (2 items)</div>
+                        <div>$319.98</div>
+                    </div>
+                    <div class="price-row">
+                        <div>Tax (7%)</div>
+                        <div>$22.40</div>
+                    </div>
+                    <div class="price-row">
+                        <div>Shipping</div>
+                        <div>$12.99</div>
+                    </div>
+                    <div class="price-row price-total">
+                        <div>Total</div>
+                        <div>$355.37</div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="confirmBtn">Confirm Order</button>
+                    <button class="btn btn-danger" id="rejectBtn">Reject Order</button>
+                    <button class="btn btn-secondary" id="messagesBtn">Messages</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages Modal -->
+    <div class="modal" id="messagesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Messages</div>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="message message-received">
+                    <div>Hello, is the product still in warranty?</div>
+                    <div class="message-time">Feb 28, 2025 10:23 AM</div>
+                </div>
+                <div class="message message-sent">
+                    <div>Yes, all our products come with a 2-year warranty period. The warranty card will be included in the package.</div>
+                    <div class="message-time">Feb 28, 2025 10:45 AM</div>
+                </div>
+                <div class="message message-received">
+                    <div>Great! And what about the delivery time?</div>
+                    <div class="message-time">Feb 28, 2025 11:02 AM</div>
+                </div>
+                <div class="message message-sent">
+                    <div>The estimated delivery time is 3-5 business days after order confirmation.</div>
+                    <div class="message-time">Feb 28, 2025 11:15 AM</div>
+                </div>
+            </div>
+            <div class="message-input">
+                <textarea placeholder="Type your message here..."></textarea>
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle modal functionality
+        const modal = document.getElementById('messagesModal');
+        const messagesBtn = document.getElementById('messagesBtn');
+        const closeModal = document.getElementById('closeModal');
+
+        messagesBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside the content
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
